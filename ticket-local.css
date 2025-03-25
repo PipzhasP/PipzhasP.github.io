@@ -1,0 +1,58 @@
+/* Estilos para el ticket de domicilio */
+body {
+    background: linear-gradient(180deg, #0a0a0a, #1a1a1a); /* Fondo degradado oscuro */
+    font-family: 'Metal Mania', cursive; /* Fuente metalera */
+    color: #e0e0e0; /* Texto gris claro */
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #ff0000; /* Rojo agresivo */
+    text-align: center;
+    font-size: 56px; /* Aumenta el tamaño */
+    text-shadow: 5px 5px 10px #7b0000, 0 0 15px #fc0202; /* Sombra más intensa y dramática */
+    margin-top: 20px;
+    letter-spacing: 4px; /* Más separación entre letras */
+    transform: rotate(-5deg); /* Efecto inclinado para más dinamismo */
+}
+
+.ticket-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: linear-gradient(180deg, #2a2a2a, #1a1a1a); /* Degradado oscuro */
+    border: 5px double #b22222; /* Borde rojo fuego */
+    border-radius: 15px;
+    box-shadow: 0 0 25px #ff4500, inset 0 0 10px #7b0000; /* Efecto de brillo agresivo */
+}
+
+.imagen-freddy img {
+    max-width: 100%;
+    height: auto;
+    border: 5px solid #b22222; /* Borde más grueso */
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px #ff4500, 0px 0px 10px #a40000 inset; /* Sombra y brillo internos */
+}
+
+.detalles-pedido {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #0a0a0a; /* Fondo aún más oscuro */
+    border: 3px solid #a40000; /* Borde rojo profundo */
+    border-radius: 15px;
+}
+
+.detalles-pedido p {
+    font-style: italic; /* Letras inclinadas */
+    margin: 8px 0;
+    color: #ff8c00; /* Naranja claro para detalle */
+}
+
+.total {
+    color: #ff0000; /* Rojo brillante */
+    font-size: 28px; /* Aumenta el tamaño */
+    font-weight: bold;
+    text-transform: uppercase; /* Letras mayúsculas */
+    text-shadow: 3px 3px #7b0000, 0 0 10px #fc0202; /* Sombra intensa */
+}
