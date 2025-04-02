@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumen del Pedido - Las Pipzhas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Resumen del Pedido - Las Pipzhas</h1>
+    </header>
+    <main>
+        <section id="summary">
+            <h2>Resumen del Pedido</h2>
+            <p id="orderSummary"></p>
+            <h3>Total a Pagar: $<span id="total"></span></h3>
+        </section>
+    </main>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const pizzas = urlParams.getAll("pizza").map(Number);
+        const complements = urlParams.getAll("complement").map(Number);
+        const delivery = Number(urlParams.get("delivery")) || 0;
+
+        const total = pizzas.reduce((sum, price) => sum + price, 0) +
+                      complements.reduce((sum, price) => sum + price, 0) +
+                      delivery;
+
+        const summaryText = `Pizzas seleccionadas: ${pizzas.length} - Complementos seleccionados: ${complements.length}<br>
+                             Método de entrega: ${delivery > 0 ? "Domicilio ($50)" : "Local ($0)"}`;
+        document.getElementById("orderSummary").innerHTML = summaryText;
+        document.getElementById("total").textContent = total;
+    </script>
+</body>
+</html>

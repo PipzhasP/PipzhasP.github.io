@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Método de Entrega - Las Pipzhas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Método de Entrega - Las Pipzhas</h1>
+    </header>
+    <main>
+        <form id="deliveryForm" action="resumen.html">
+            <fieldset>
+                <legend>Método de Entrega</legend>
+                <label><input type="radio" name="delivery" value="0" checked> Consumo Local - $0</label><br>
+                <label><input type="radio" name="delivery" value="50"> Envío a Domicilio - $50</label><br>
+                <div id="address" style="display: none;">
+                    <label>Municipio: <input type="text" name="municipio"></label><br>
+                    <label>Calle: <input type="text" name="calle"></label><br>
+                    <label>Colonia: <input type="text" name="colonia"></label><br>
+                </div>
+            </fieldset>
+            <label>Nombre: <input type="text" name="name" required></label><br>
+            <label>Teléfono: <input type="tel" name="phone" required></label><br>
+            <button type="submit">Siguiente</button>
+        </form>
+    </main>
+    <script>
+        document.querySelectorAll('input[name="delivery"]').forEach(input => {
+            input.addEventListener("change", function () {
+                const addressSection = document.getElementById("address");
+                addressSection.style.display = this.value === "50" ? "block" : "none";
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,1 +1,1 @@
-window.location.href = 'pizzeria.html';
+window.location.href ="metal.html"

@@ -1,0 +1,68 @@
+body {
+    background-color: #1a1a1a; /* Fondo sólido */
+    font-family: 'Metal Mania', cursive; /* Fuente temática del metal */
+    color: #e0e0e0;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #ff0000;
+    font-size: 56px; /* Tamaño destacado */
+    text-shadow: 4px 4px 8px #7b0000, 0 0 5px #fc0202; /* Sombra dramática */
+    transform: rotate(-3deg); /* Efecto inclinado */
+}
+
+form {
+    background: linear-gradient(180deg, #2a2a2a, #1a1a1a); /* Degradado temático */
+    border: 5px double #b22222; /* Borde rojo impactante */
+    box-shadow: 0 0 20px #a40000, 0 0 10px #ff4500 inset; /* Brillo interno */
+    margin: 20px auto; /* Centrar el formulario */
+    padding: 20px; /* Espaciado interno */
+    width: 80%; /* Tamaño dinámico para adaptarse a pantallas */
+}
+
+button {
+    background: linear-gradient(45deg, #ff4500, #ff0000); /* Fondo llamativo */
+    box-shadow: 0px 0px 15px #ff8c00, 0px 0px 10px #a40000 inset; /* Efecto brillante */
+    text-transform: uppercase; /* Mayúsculas para impacto */
+    color: #ffffff; /* Texto en blanco */
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s; /* Suavidad en efectos */
+}
+
+button:hover {
+    background: linear-gradient(45deg, #a40000, #7b0000); /* Cambio al pasar el mouse */
+    box-shadow: 0px 0px 20px #dd1818; /* Intensifica el brillo */
+    transform: scale(1.1); /* Efecto de zoom */
+}
+
+label {
+    font-style: italic; /* Un toque inclinado */
+    text-shadow: 1px 1px #7b0000; /* Sombra temática */
+}
+
+select, input {
+    background-color: #2a2a2a; /* Fondo oscuro */
+    border: 2px solid #b22222; /* Borde rojo */
+    color: #e0e0e0; /* Texto claro */
+    padding: 5px;
+    margin: 10px 0;
+    width: 100%; /* Ajuste responsivo */
+}
+
+select:hover, input:hover {
+    border-color: #ff0000; /* Cambiar borde al pasar el mouse */
+}
+
+#info-apartado {
+    border: 2px solid #b22222; /* Borde temático */
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #1a1a1a; /* Fondo oscuro */
+    color: #e0e0e0;
+    text-align: center;
+}

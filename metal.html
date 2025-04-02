@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mundo Metal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="metal.css">
+</head>
+<body>
+    <h1>Mundo del Metal</h1>
+
+    <form id="formulario">
+        <!-- Apartados -->
+        <h2>Selecciona un Apartado:</h2>
+        <label for="apartado">Apartado:</label>
+        <select id="apartado" name="apartado">
+            <option value="generos">Géneros</option>
+            <option value="historia">Historia</option>
+            <option value="eventos">Eventos</option>
+            <option value="mercancia">Mercancía</option>
+            <option value="galeria">Galería</option>
+        </select>
+        <br><br>
+
+        <!-- Información -->
+        <h2>Información:</h2>
+        <div id="info-apartado">
+            <p>Elige un apartado para conocer más sobre el fascinante mundo del metal.</p>
+        </div>
+        <br><br>
+
+        <!-- Métodos de Interacción -->
+        <h2>Método de Interacción</h2>
+        <label for="contacto">Forma de Contacto:</label>
+        <select id="contacto" name="contacto" required>
+            <option value="">Seleccione...</option>
+            <option value="email">Correo Electrónico</option>
+            <option value="redes">Redes Sociales</option>
+        </select>
+        <br><br>
+
+        <!-- Botones -->
+        <button id="explorar">Explorar Mundo Metal</button>
+        <button id="comprar">Comprar Mercancía</button>
+        <button id="test-btn">Test</button>
+    </form>
+
+    <script>
+        // Funcionalidad del botón Test
+        document.getElementById('test-btn').onclick = function() {
+            window.location.href = 'test.html'; // Redirige al archivo del test
+        };
+    </script>
+</body>
+</html>

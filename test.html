@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test: ¿Qué tanto sabes del metal?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Metal Mania', cursive;
+            text-align: center;
+            background-color: #222;
+            color: #fff;
+            padding: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .question {
+            margin: 15px 0;
+        }
+        .btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #555;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #999;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>¿Qué tanto sabes del metal?</h1>
+    <form id="quiz">
+        <!-- Preguntas -->
+        <div class="question">
+            <p>1. ¿Cuál es el álbum más vendido de Metallica?</p>
+            <input type="radio" name="q1" value="correct"> Black Album<br>
+            <input type="radio" name="q1" value="wrong"> Master of Puppets<br>
+            <input type="radio" name="q1" value="wrong"> Ride the Lightning<br>
+        </div>
+
+        <div class="question">
+            <p>2. ¿Qué banda es conocida por la canción 'Highway to Hell'?</p>
+            <input type="radio" name="q2" value="correct"> AC/DC<br>
+            <input type="radio" name="q2" value="wrong"> Iron Maiden<br>
+            <input type="radio" name="q2" value="wrong"> Judas Priest<br>
+        </div>
+
+        <div class="question">
+            <p>3. ¿Cuál es el nombre del vocalista de Guns N' Roses?</p>
+            <input type="radio" name="q3" value="correct"> Axl Rose<br>
+            <input type="radio" name="q3" value="wrong"> Slash<br>
+            <input type="radio" name="q3" value="wrong"> Duff McKagan<br>
+        </div>
+
+        <div class="question">
+            <p>4. ¿Qué banda es conocida como los pioneros del Heavy Metal?</p>
+            <input type="radio" name="q4" value="correct"> Black Sabbath<br>
+            <input type="radio" name="q4" value="wrong"> Deep Purple<br>
+            <input type="radio" name="q4" value="wrong"> Led Zeppelin<br>
+        </div>
+
+        <div class="question">
+            <p>5. ¿Quién es el guitarrista principal de Queen?</p>
+            <input type="radio" name="q5" value="correct"> Brian May<br>
+            <input type="radio" name="q5" value="wrong"> Freddie Mercury<br>
+            <input type="radio" name="q5" value="wrong"> Roger Taylor<br>
+        </div>
+
+        <div class="question">
+            <p>6. ¿Qué banda es conocida por la canción 'Smoke on the Water'?</p>
+            <input type="radio" name="q6" value="correct"> Deep Purple<br>
+            <input type="radio" name="q6" value="wrong"> Led Zeppelin<br>
+            <input type="radio" name="q6" value="wrong"> AC/DC<br>
+        </div>
+
+        <div class="question">
+            <p>7. ¿Qué álbum de Pink Floyd está considerado como uno de los más vendidos de todos los tiempos?</p>
+            <input type="radio" name="q7" value="correct"> The Dark Side of the Moon<br>
+            <input type="radio" name="q7" value="wrong"> Wish You Were Here<br>
+            <input type="radio" name="q7" value="wrong"> The Wall<br>
+        </div>
+
+        <div class="question">
+            <p>8. ¿Qué vocalista es conocido como el "Príncipe de las Tinieblas"?</p>
+            <input type="radio" name="q8" value="correct"> Ozzy Osbourne<br>
+            <input type="radio" name="q8" value="wrong"> Ronnie James Dio<br>
+            <input type="radio" name="q8" value="wrong"> Bruce Dickinson<br>
+        </div>
+
+        <div class="question">
+            <p>9. ¿Qué banda de metal lanzó el álbum 'Painkiller'?</p>
+            <input type="radio" name="q9" value="correct"> Judas Priest<br>
+            <input type="radio" name="q9" value="wrong"> Iron Maiden<br>
+            <input type="radio" name="q9" value="wrong"> Slayer<br>
+        </div>
+
+        <div class="question">
+            <p>10. ¿Qué banda es conocida por sus miembros maquillados como personajes?</p>
+            <input type="radio" name="q10" value="correct"> KISS<br>
+            <input type="radio" name="q10" value="wrong"> Slipknot<br>
+            <input type="radio" name="q10" value="wrong"> Ghost<br>
+        </div>
+
+        <!-- Botón de resultados -->
+        <button type="button" class="btn" onclick="calculateResult()">Finalizar Test</button>
+    </form>
+
+    <!-- Resultado -->
+    <div id="result" class="result"></div>
+
+    <script>
+        function calculateResult() {
+            let correctAnswers = 0;
+            const quiz = document.getElementById('quiz');
+            const answers = quiz.querySelectorAll('input[type="radio"]:checked');
+
+            answers.forEach(answer => {
+                if (answer.value === 'correct') {
+                    correctAnswers++;
+                }
+            });
+
+            const result = document.getElementById('result');
+            if (correctAnswers >= 7) {
+                result.innerHTML = "Demasiado true 🤘🔥";
+            } else {
+                result.innerHTML = "Uuuuy No Que Posser 😅";
+            }
+        }
+    </script>
+</body>
+</html>

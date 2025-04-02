@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Información de Domicilio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="domicilio.css">
+    <title>Pedido a Domicilio</title>
 </head>
 <body>
-    <h1>Información de Domicilio</h1>
+    <h1>Información de Pedido a Domicilio</h1>
     <form id="formulario-domicilio">
         <!-- Campos para la información de domicilio -->
         <label for="nombre">Nombre:</label>
@@ -31,13 +29,32 @@
         <input type="text" id="estado" name="estado" required>
         <br><br>
 
-        <!-- Botón para enviar -->
-        <button type="button" id="enviar">Enviar Pedido</button>
+        <!-- Método de Pago -->
+        <label for="metodo-pago">Método de Pago:</label>
+        <select id="metodo-pago" name="metodo-pago" required>
+            <option value="">Seleccione...</option>
+            <option value="Efectivo">Efectivo</option>
+            <option value="Tarjeta">Tarjeta</option>
+        </select>
+        <br><br>
+        
+        <!-- Campos para Pago con Tarjeta -->
+        <div id="pago-tarjeta" style="display: none;">
+            <label for="num-tarjeta">Número de Tarjeta:</label>
+            <input type="text" id="num-tarjeta" name="num-tarjeta" maxlength="16" pattern="\d{16}">
+            <br><br>
+            <label for="fecha-exp">Fecha de Expiración (MM/AA):</label>
+            <input type="text" id="fecha-exp" name="fecha-exp" maxlength="5" pattern="\d{2}/\d{2}">
+            <br><br>
+            <label for="cvv">CVV:</label>
+            <input type="text" id="cvv" name="cvv" maxlength="3" pattern="\d{3}">
+            <br><br>
+        </div>
+        
+        <button id="enviar">Enviar Pedido</button>
+        <p id="confirmacion"></p>
     </form>
 
-    <!-- Elemento para mostrar mensajes de confirmación -->
-    <p id="confirmacion"></p>
-
-    <script src="pagina-domicilio.js"></script>
+    <script src="domicilio.js"></script>
 </body>
 </html>
