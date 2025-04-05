@@ -1,17 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Selector de Opciones</title>
+    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Metal Mania', cursive;
+            text-align: center;
+            background-color: #222;
+            color: #fff;
+            padding: 20px;
+        }
+        .option-btn {
+            margin: 10px;
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #555;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .option-btn:hover {
+            background-color: #999;
+        }
+    </style>
 </head>
 <body>
-    <h1>Bienvenido</h1>
-    <p>Aquí puedes elegir la página que desees ver:</p>
-    <ul>
-        <li><a href="pizzeria.html">Pizzería</a></li>
-        <li><a href="metal.html">Proyecto Integral</a></li>
-    </ul>
+    <h1>Bienvenido al Mundo del Metal</h1>
+    <p>Selecciona una de las siguientes opciones:</p>
+    <button class="option-btn" id="pipzhas-btn">Pipzhas</button>
+    <button class="option-btn" id="mundo-metal-btn">Mundo Metal</button>
+
+    <script>
+        // Funciones de redirección
+        document.getElementById('pipzhas-btn').onclick = function() {
+            window.location.href = 'pizzeria.html';
+        };
+        document.getElementById('mundo-metal-btn').onclick = function() {
+            window.location.href = 'metal.html';
+        };
+    </script>
 </body>
-<script src="index.js"></script>
 </html>

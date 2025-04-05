@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Comprar Mercancía - Mundo Metal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="metal.css">
+    <style>
+        body {
+            font-family: 'Metal Mania', cursive;
+            text-align: center;
+            background-color: #222;
+            color: #fff;
+            padding: 20px;
+        }
+        h1, h2 {
+            margin-bottom: 20px;
+        }
+        .gallery img {
+            width: 150px;
+            height: 150px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        .btn {
+            padding: 10px 20px;
+            background-color: #555;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #999;
+        }
+        .section-container {
+            margin-top: 20px;
+            padding: 10px;
+            text-align: left;
+            display: inline-block;
+            background-color: #333;
+            border-radius: 5px;
+        }
+        label {
+            display: block;
+            margin: 5px 0;
+        }
+        input[type="number"], input[type="text"] {
+            padding: 5px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Mercancía Oficial del Mundo Metal</h1>
+    <p>Consigue productos exclusivos de tus bandas favoritas.</p>
+
+    <h2>Categorías Disponibles:</h2>
+    <ul>
+        <li>Camisetas y Sudaderas</li>
+        <li>Discos y Vinilos</li>
+        <li>Pósters y Stickers</li>
+        <li>Accesorios y Joyería</li>
+        <li>Ediciones Especiales y Coleccionables</li>
+    </ul>
+
+    <h2>Galería de Productos</h2>
+    <div class="gallery">
+        <img src="camiseta-metallica.jpeg" alt="Camiseta Metallica">
+        <img src="vinilo-iron-maiden.jpg" alt="Vinilo Iron Maiden">
+        <img src="poster-slipknot.jpg" alt="Póster Slipknot">
+    </div>
+
+    <h2>Simula tu compra</h2>
+    <div class="section-container">
+        <p>Selecciona los artículos que deseas:</p>
+        <label><input type="checkbox" value="25" class="producto"> Camiseta - $25</label>
+        <label><input type="checkbox" value="40" class="producto"> Vinilo - $40</label>
+        <label><input type="checkbox" value="15" class="producto"> Póster - $15</label>
+        <button class="btn" onclick="calcularTotal()">Calcular Total</button>
+        <p id="total"></p>
+    </div>
+
+    <h2>Detalles de Pago y Envío</h2>
+    <div class="section-container">
+        <label>Método de Pago: Tarjeta</label>
+        <label>Número de Tarjeta:</label>
+        <input type="number" id="tarjeta" placeholder="Ingrese su número de tarjeta">
+        <label>Dirección:</label>
+        <input type="text" id="direccion" placeholder="Ingrese su dirección de envío">
+        <button class="btn" onclick="realizarPedido()">Realizar Pedido</button>
+        <p id="mensaje"></p>
+    </div>
+
+    <h2>Buscador de Artículos</h2>
+    <input type="text" id="buscador" placeholder="Busca tu artículo favorito...">
+    <button class="btn" onclick="buscarArticulo()">Buscar</button>
+    <p id="resultado-busqueda"></p>
+
+    <div class="offers">
+        <h2>Ofertas Especiales</h2>
+        <p>¡Aprovecha descuentos en vinilos y camisetas! Solo por tiempo limitado.</p>
+    </div>
+
+    <a href="metal.html">Volver a la página principal</a>
+
+    <script>
+        function calcularTotal() {
+            let productos = document.querySelectorAll('.producto:checked');
+            let total = 0;
+            productos.forEach(function(producto) {
+                total += parseInt(producto.value);
+            });
+            document.getElementById("total").innerText = "Total a pagar: $" + total;
+        }
+
+        function realizarPedido() {
+            let tarjeta = document.getElementById("tarjeta").value;
+            let direccion = document.getElementById("direccion").value;
+            let totalText = document.getElementById("total").innerText;
+
+            if(tarjeta.trim() === "" || direccion.trim() === "") {
+                document.getElementById("mensaje").innerText = "Por favor, complete todos los campos de pago y envío.";
+                return;
+            }
+            if(totalText === "" || totalText === "Total a pagar: $0") {
+                document.getElementById("mensaje").innerText = "Por favor, selecciona al menos un artículo.";
+                return;
+            }
+
+            document.getElementById("mensaje").innerText = "Pedido realizado con éxito. " + totalText + ". Se enviará a: " + direccion;
+        }
+
+        function buscarArticulo() {
+            let query = document.getElementById("buscador").value.toLowerCase();
+            let resultado = "";
+
+            if(query.includes("camiseta")) {
+                resultado = "Tenemos varias camisetas de Metallica, Iron Maiden y más.";
+            } else if(query.includes("vinilo")) {
+                resultado = "Encuentra vinilos clásicos de Megadeth, Slayer y otras bandas.";
+            } else if(query.includes("poster")) {
+                resultado = "Posters épicos de Slipknot, Black Sabbath y más disponibles.";
+            } else {
+                resultado = "Lo sentimos, no encontramos ese artículo.";
+            }
+            document.getElementById("resultado-busqueda").innerText = resultado;
+        }
+    </script>
+
+</body>
+</html>

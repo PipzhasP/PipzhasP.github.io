@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Explorar Mundo Metal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="metal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <style>
+    body {
+      font-family: 'Metal Mania', cursive;
+      text-align: center;
+      background-color: #222;
+      color: #fff;
+      padding: 20px;
+    }
+    h1 {
+      animation: fadeIn 2s;
+    }
+    .btn {
+      padding: 10px 20px;
+      background-color: #555;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 5px;
+    }
+    .btn:hover {
+      background-color: #999;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    input[type="text"], select {
+      padding: 8px;
+      border-radius: 5px;
+      border: none;
+      margin: 10px;
+    }
+    iframe {
+      margin-top: 20px;
+      border: 2px solid #555;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Explorando el Mundo del Metal 🤘🔥</h1>
+  <p>Bienvenido al lugar donde el metal es más que música: es cultura, historia y pasión.</p>
+
+  <!-- Dinámica 1: Generador de Frases del Metal -->
+  <h2>Frase del Metal 🤘</h2>
+  <p>Haz clic en el botón para recibir una frase inspiradora:</p>
+  <button class="btn" onclick="generateQuote()">Generar Frase</button>
+  <p id="quote"></p>
+
+  <!-- Dinámica 2: Encuesta: ¿Qué tipo de metal te gusta? -->
+  <h2>Encuesta: ¿Qué tipo de metal te gusta? 🤔</h2>
+  <select id="metalStyle">
+      <option value="Thrash">Thrash Metal</option>
+      <option value="Heavy">Heavy Metal</option>
+      <option value="Black">Black Metal</option>
+      <option value="Death">Death Metal</option>
+      <option value="Nu">Nu Metal</option>
+      <option value="Power">Power Metal</option>
+      <option value="Folk">Folk Metal</option>
+      <option value="Symphonic">Symphonic Metal</option>
+  </select>
+  <button class="btn" onclick="showSurveyResult()">Enviar</button>
+  <p id="surveyResult"></p>
+
+  <!-- Nueva Dinámica: Dato Curioso del Metal -->
+  <h2>Dato Curioso del Metal 🤘</h2>
+  <p>Haz clic en el botón para descubrir un dato curioso del mundo metal:</p>
+  <button class="btn" onclick="generateFact()">Mostrar Dato</button>
+  <p id="fact"></p>
+
+  <!-- Dinámica 3: Conexión de Fans -->
+  <h2>Conexión de Fans 🤘</h2>
+  <p>Introduce tu nombre y sé parte de la comunidad metalera:</p>
+  <input type="text" id="fanName" placeholder="Tu nombre">
+  <button class="btn" onclick="fanGreeting()">Conectar</button>
+  <p id="fanGreeting"></p>
+
+  <!-- Mapa de Festivales -->
+  <h2>Mapa de Festivales 🌍</h2>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5314896.932438516!2d5.897904415852586!3d49.9249981394581!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3c6f4a98d5001%3A0x3e7470c3a74f2d6e!2sWacken%20Open%20Air!5e0!3m2!1ses!2s!4v1685468558256!5m2!1ses!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+  <br><br>
+  <a href="metal.html">Volver a la página principal</a>
+
+  <script>
+    // Función para generar una frase aleatoria del metal
+    function generateQuote() {
+      var quotes = [
+        "El metal es vida, es fuerza y rebeldía.",
+        "La música del metal es el rugido del espíritu indomable.",
+        "Entre distorsiones y solos, encontramos la libertad.",
+        "La pasión por el metal no conoce límites ni fronteras.",
+        "El metal es el grito de la verdad en un mundo silencioso."
+      ];
+      var randomIndex = Math.floor(Math.random() * quotes.length);
+      document.getElementById("quote").innerText = quotes[randomIndex];
+    }
+
+    // Función para mostrar el mensaje personalizado según el género metal elegido
+    function showSurveyResult() {
+      var metalType = document.getElementById('metalStyle').value;
+      var message = "";
+      switch(metalType) {
+        case "Thrash":
+          message = "¡Increíble elección! El Thrash Metal es pura adrenalina y caos controlado. ¡Siente la velocidad!";
+          break;
+        case "Heavy":
+          message = "¡Fuerte y poderoso! El Heavy Metal es un clásico eterno lleno de riffs legendarios.";
+          break;
+        case "Black":
+          message = "Oscuro y místico. El Black Metal te envuelve en un aura de misterio y tradición.";
+          break;
+        case "Death":
+          message = "Brutal y sin concesiones. El Death Metal es la expresión máxima del caos y la intensidad.";
+          break;
+        case "Nu":
+          message = "Moderno y enérgico. El Nu Metal fusiona estilos y te conecta con la vanguardia del metal.";
+          break;
+        case "Power":
+          message = "Épico y grandioso. El Power Metal es tu grito de batalla con melodías que inspiran.";
+          break;
+        case "Folk":
+          message = "Arraigado en la tradición y la cultura. El Folk Metal celebra lo ancestral con un toque moderno.";
+          break;
+        case "Symphonic":
+          message = "Dramático y majestuoso. El Symphonic Metal transforma cada nota en una sinfonía de emociones.";
+          break;
+        default:
+          message = "¡Gracias por compartir tu pasión por el metal!";
+      }
+      document.getElementById('surveyResult').innerText = message;
+    }
+
+    // Función para generar un dato curioso aleatorio sobre el metal
+    function generateFact() {
+      var facts = [
+        "Sabías que Black Sabbath es considerado el pionero del Heavy Metal.",
+        "Metallica es la banda de metal más vendida de la historia.",
+        "El logo de Iron Maiden es uno de los más icónicos y reconocidos en el mundo del metal.",
+        "El metal no solo es música, también es un movimiento cultural con festivales en todo el mundo.",
+        "Muchos músicos de metal utilizan máscaras y elementos teatrales en sus presentaciones para crear un ambiente único."
+      ];
+      var randomIndex = Math.floor(Math.random() * facts.length);
+      document.getElementById("fact").innerText = facts[randomIndex];
+    }
+
+    // Función para saludar al fan y conectarlo con la comunidad
+    function fanGreeting() {
+      var fanName = $('#fanName').val();
+      if (fanName.trim() === '') {
+        $('#fanGreeting').text('Por favor, ingresa tu nombre.');
+      } else {
+        $('#fanGreeting').hide()
+          .text('¡Bienvenido, ' + fanName + '! Únete a la comunidad metalera y siente la pasión del metal. 🤘')
+          .fadeIn(500);
+      }
+    }
+  </script>
+
+</body>
+</html>
+

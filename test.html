@@ -138,6 +138,96 @@
                 result.innerHTML = "Uuuuy No Que Posser 😅";
             }
         }
-    </script>
+    </script> 
+    <!-- Botones -->
+<button type="button" class="btn" onclick="restartTest()">Realizar de nuevo</button>
+<button type="button" class="btn" onclick="downloadResults()">Descargar respuestas</button>
+
+<script>
+    function restartTest() {
+        location.reload();
+    }
+
+    function downloadResults() {
+        const quiz = document.getElementById('quiz');
+        const answers = quiz.querySelectorAll('input[type="radio"]:checked');
+        let content = "Respuestas del test:\n\n";
+
+        answers.forEach((answer, index) => {
+            content += `Pregunta ${index + 1}: ${answer.parentElement.textContent.trim()}\n`;
+        });
+
+        content += "\nResultado: " + document.getElementById('result').textContent;
+
+        const blob = new Blob([content], { type: 'text/plain' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = "respuestas_test_metal.txt"; // Cambiar a PDF requiere una librería extra como jsPDF
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+</script>
+<script>
+    function calculateResult() {
+        let correctAnswers = 0;
+        const quiz = document.getElementById('quiz');
+        const answers = quiz.querySelectorAll('input[type="radio"]:checked');
+        let resultText = "Respuestas del Test:\n\n";
+
+        answers.forEach((answer, index) => {
+            resultText += `Pregunta ${index + 1}: ${answer.value}\n`;
+            if (answer.value === "Black Album" || answer.value === "AC/DC") {
+                correctAnswers++;
+            }
+        });
+
+        let finalMessage = correctAnswers >= 2 ? "Eres un verdadero metalero 🤘🔥" : "Aún tienes que aprender más sobre el metal 😅";
+        resultText += `\nResultado final: ${finalMessage}`;
+
+        document.getElementById("result").innerText = finalMessage;
+        return resultText;
+    }
+
+    function downloadPDF() {
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF();
+        pdf.text(calculateResult(), 10, 10);
+        pdf.save("resultados_test_metal.pdf");
+    }
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+    function calculateResult() {
+        let correctAnswers = 0;
+        const quiz = document.getElementById('quiz');
+        const answers = quiz.querySelectorAll('input[type="radio"]:checked');
+        let resultText = "Respuestas del Test:\n\n";
+
+        answers.forEach((answer, index) => {
+            resultText += `Pregunta ${index + 1}: ${answer.parentElement.textContent.trim()}\n`;
+            if (answer.value === "correct") {
+                correctAnswers++;
+            }
+        });
+
+        let finalMessage = correctAnswers >= 7 ? "🔥 ¡Eres un verdadero metalero! 🤘" : "😅 Aún tienes que aprender más sobre el metal...";
+        resultText += `\nResultado final: ${finalMessage}`;
+
+        document.getElementById("result").innerText = finalMessage;
+        return resultText;
+    }
+
+    function downloadPDF() {
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF();
+        pdf.text(calculateResult(), 10, 10);
+        pdf.save("resultados_test_metal.pdf");
+    }
+</script>
+
+<a href="metal.html">Volver a la página principal</a>
+
+    
 </body>
 </html>

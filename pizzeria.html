@@ -1,57 +1,83 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Las Pipzhas</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Pizzeria "EL JORCH"</title>
+    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="pizzeria.css">
 </head>
 <body>
-    <header>
-        <h1>Las Pipzhas</h1>
-        <p>¡Elige tu pizza favorita y complementos!</p>
-    </header>
-    <main>
-        <section>
-            <h2>Menú</h2>
-            <form id="orderForm">
-                <h3>Pizzas</h3>
-                <label><input type="checkbox" name="pizza" value="Mexicana-$10"> Mexicana - $10</label><br>
-                <label><input type="checkbox" name="pizza" value="Pepperoni-$12"> Pepperoni - $12</label><br>
-                <label><input type="checkbox" name="pizza" value="Hawaiana-$11"> Hawaiana - $11</label><br>
-                <h3>Complementos</h3>
-                <label><input type="checkbox" name="complement" value="Refresco-$30"> Refresco - $30</label><br>
-                <label><input type="checkbox" name="complement" value="Papas-$45"> Papas - $45</label><br>
-                <label><input type="checkbox" name="complement" value="Ensalada-$35"> Ensalada - $35</label><br>
-                <label><input type="checkbox" name="complement" value="Postre-$55"> Postre - $55</label><br>
-                <fieldset>
-                    <legend>Método de Entrega</legend>
-                    <label><input type="radio" name="delivery" value="local" checked> Consumo Local - $0</label><br>
-                    <label><input type="radio" name="delivery" value="domicilio"> Envío a Domicilio - $50</label><br>
-                    <div id="address" style="display: none;">
-                        <label>Municipio: <input type="text" name="municipio"></label><br>
-                        <label>Calle: <input type="text" name="calle"></label><br>
-                        <label>Colonia: <input type="text" name="colonia"></label><br>
-                    </div>
-                </fieldset>
-                <fieldset>
-                    <legend>Método de Pago</legend>
-                    <label><input type="radio" name="payment" value="tarjeta" checked> Tarjeta</label>
-                    <label><input type="radio" name="payment" value="efectivo"> Efectivo</label>
-                </fieldset>
-                <label>Nombre: <input type="text" name="name" required></label><br>
-                <label>Teléfono: <input type="tel" name="phone" required></label><br>
-                <button type="submit">Finalizar Pedido</button>
-            </form>
-        </section>
-        <section id="summary" style="display: none;">
-            <h2>Resumen del Pedido</h2>
-            <p id="orderSummary"></p>
-        </section>
-    </main>
-    <footer>
-        <p>Horario: Apertura 10:00 AM - Cierre 11:00 PM</p>
-    </footer>
-    <script src="script.js"></script>
+    <h1>Pipshas "El Posser"</h1>
+    <form id="formulario">
+        <!-- Selección de Pizzas -->
+        <label for="pizza1">Pizza 1:</label>
+        <select id="pizza1" name="pizza1">
+            <option value="Nada">Nada ($0)</option>
+            <option value="Mexicana">Mexicana ($100)</option>
+            <option value="Pepperoni">Pepperoni ($120)</option>
+            <option value="Hawaiana">Hawaiana ($110)</option>
+        </select>
+        <br><br>
+        <label for="pizza2">Pizza 2:</label>
+        <select id="pizza2" name="pizza2">
+            <option value="Nada">Nada ($0)</option>
+            <option value="Mexicana">Mexicana ($100)</option>
+            <option value="Pepperoni">Pepperoni ($120)</option>
+            <option value="Hawaiana">Hawaiana ($110)</option>
+        </select>
+        <br><br>
+        <label for="pizza3">Pizza 3:</label>
+        <select id="pizza3" name="pizza3">
+            <option value="Nada">Nada ($0)</option>
+            <option value="Mexicana">Mexicana ($100)</option>
+            <option value="Pepperoni">Pepperoni ($120)</option>
+            <option value="Hawaiana">Hawaiana ($110)</option>
+        </select>
+        <br><br>
+
+        <!-- Complementos -->
+        <h2>Complementos</h2>
+        <label for="refresco">Refresco ($30):</label>
+        <input type="checkbox" id="refresco" name="refresco" value="30">
+        <br>
+        <label for="papas">Papas ($45):</label>
+        <input type="checkbox" id="papas" name="papas" value="45">
+        <br>
+        <label for="postre">Postre ($55):</label>
+        <input type="checkbox" id="postre" name="postre" value="55">
+        <br>
+        <label for="ensalada">Ensalada ($35):</label>
+        <input type="checkbox" id="ensalada" name="ensalada" value="35">
+        <br><br>
+
+        <!-- Método de Pago -->
+        <h2>Método de Pago</h2>
+        <label for="metodo-pago">Método de Pago:</label>
+        <select id="metodo-pago" name="metodo-pago" required>
+            <option value="">Seleccione...</option>
+            <option value="Efectivo">Efectivo</option>
+            <option value="Tarjeta">Tarjeta</option>
+        </select>
+        <br><br>
+
+        <!-- Campos para Pago con Tarjeta -->
+        <div id="pago-tarjeta" style="display: none;">
+            <label for="num-tarjeta">Número de Tarjeta:</label>
+            <input type="text" id="num-tarjeta" name="num-tarjeta" maxlength="16" pattern="\d{16}">
+            <br><br>
+            <label for="fecha-exp">Fecha de Expiración (MM/AA):</label>
+            <input type="text" id="fecha-exp" name="fecha-exp" maxlength="5" pattern="\d{2}/\d{2}">
+            <br><br>
+            <label for="cvv">CVV:</label>
+            <input type="text" id="cvv" name="cvv" maxlength="3" pattern="\d{3}">
+            <br><br>
+        </div>
+
+        <!-- Botones -->
+        <button id="local">Pedido Local</button>
+        <button id="domicilio">Pedido a Domicilio</button>
+    </form>
+
+    <script src="pizzeria.js"></script>
+    <a href="index.html">Volver al menu</a>
 </body>
 </html>
