@@ -1,4 +1,9 @@
-body {
+@media (max-width: 600px) {
+    .main {
+      flex-direction: column;
+    }
+  }
+  body {
     background-color: #1a1a1a; /* Fondo sólido */
     font-family: 'Metal Mania', cursive; /* Fuente temática del metal */
     color: #e0e0e0;

@@ -4,18 +4,41 @@
   <meta charset="UTF-8">
   <title>Explorar Mundo Metal</title>
   <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="metal.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="metal.css">
   <style>
+    :root {
+      --primary-bg: #222;
+      --secondary-bg: #333;
+      --accent: #e63946;
+      --btn-bg: #555;
+      --btn-hover: #999;
+    }
     body {
       font-family: 'Metal Mania', cursive;
       text-align: center;
       background-color: #222;
       color: #fff;
       padding: 20px;
+      margin: 0;
+      transition: background-image 1s ease-in-out;
+    }
+    h1, h2 {
+      margin-bottom: 20px;
     }
     h1 {
+      font-size: 3rem;
       animation: fadeIn 2s;
+      cursor: pointer;
+      text-shadow: 2px 2px 8px #000;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    p {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
     }
     .btn {
       padding: 10px 20px;
@@ -24,40 +47,75 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      margin: 5px;
+      margin: 10px 5px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
     }
     .btn:hover {
       background-color: #999;
+      transform: scale(1.05);
     }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    input[type="text"], select {
-      padding: 8px;
+    .section-container {
+      margin: 20px auto;
+      padding: 15px;
+      text-align: left;
+      background-color: #333;
       border-radius: 5px;
-      border: none;
-      margin: 10px;
+      max-width: 600px;
+      width: 90%;
+    }
+    label {
+      display: block;
+      margin: 5px 0;
+      font-weight: bold;
+    }
+    input[type="text"], input[type="number"], select {
+      padding: 8px;
+      width: 100%;
+      margin-bottom: 10px;
+      border-radius: 3px;
+      border: 1px solid #555;
+      background-color: #fff;
+      color: #222;
+      transition: border-color 0.3s ease;
+    }
+    input[type="text"]:focus, input[type="number"]:focus, select:focus {
+      border-color: #999;
     }
     iframe {
       margin-top: 20px;
       border: 2px solid #555;
     }
+    #clock {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+    /* Imagen para el dato curioso */
+    #factImg {
+      display: none;
+      max-width: 300px;
+      margin: 20px auto;
+      border: 3px solid var(--accent);
+      border-radius: 10px;
+    }
   </style>
 </head>
 <body>
 
-  <h1>Explorando el Mundo del Metal 🤘🔥</h1>
+  <!-- Título interactivo con Easter Egg -->
+  <h1 id="mainTitle">Explorando el Mundo del Metal 🤘🔥</h1>
   <p>Bienvenido al lugar donde el metal es más que música: es cultura, historia y pasión.</p>
-
-  <!-- Dinámica 1: Generador de Frases del Metal -->
+  
+  <!-- Reloj en tiempo real -->
+  <div id="clock"></div>
+  
+  <!-- Dinámica 1: Generador de Frase -->
   <h2>Frase del Metal 🤘</h2>
-  <p>Haz clic en el botón para recibir una frase inspiradora:</p>
+  <p>Haz clic para recibir una cita inspiradora:</p>
   <button class="btn" onclick="generateQuote()">Generar Frase</button>
   <p id="quote"></p>
-
-  <!-- Dinámica 2: Encuesta: ¿Qué tipo de metal te gusta? -->
-  <h2>Encuesta: ¿Qué tipo de metal te gusta? 🤔</h2>
+  
+  <!-- Dinámica 2: Encuesta de Género -->
+  <h2>¿Qué tipo de metal te gusta? 🤔</h2>
   <select id="metalStyle">
       <option value="Thrash">Thrash Metal</option>
       <option value="Heavy">Heavy Metal</option>
@@ -70,48 +128,60 @@
   </select>
   <button class="btn" onclick="showSurveyResult()">Enviar</button>
   <p id="surveyResult"></p>
-
-  <!-- Nueva Dinámica: Dato Curioso del Metal -->
+  
+  <!-- Dinámica 3: Dato Curioso -->
   <h2>Dato Curioso del Metal 🤘</h2>
-  <p>Haz clic en el botón para descubrir un dato curioso del mundo metal:</p>
+  <p>Haz clic para descubrir un dato curioso:</p>
   <button class="btn" onclick="generateFact()">Mostrar Dato</button>
   <p id="fact"></p>
-
-  <!-- Dinámica 3: Conexión de Fans -->
+  <!-- Aquí se mostrará la imagen relacionada -->
+  <img id="factImg" src="" alt="Imagen relacionada al dato">
+  
+  <!-- Dinámica 4: Conexión de Fans -->
   <h2>Conexión de Fans 🤘</h2>
-  <p>Introduce tu nombre y sé parte de la comunidad metalera:</p>
+  <p>Ingresa tu nombre para conectar con la comunidad metalera:</p>
   <input type="text" id="fanName" placeholder="Tu nombre">
   <button class="btn" onclick="fanGreeting()">Conectar</button>
   <p id="fanGreeting"></p>
-
+  
   <!-- Mapa de Festivales -->
   <h2>Mapa de Festivales 🌍</h2>
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5314896.932438516!2d5.897904415852586!3d49.9249981394581!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3c6f4a98d5001%3A0x3e7470c3a74f2d6e!2sWacken%20Open%20Air!5e0!3m2!1ses!2s!4v1685468558256!5m2!1ses!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5314896.932438516!2d5.897904415852586!3d49.9249981394581!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3c6f4a98d5001%3A0x3e7470c3a74f2d6e!2sWacken%20Open%20Air!5e0!3m2!1ses!2s!4v1685468558256!5m2!1ses!2s" 
+          width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  
   <br><br>
-  <a href="metal.html">Volver a la página principal</a>
-
+  <a href="metal.html" class="btn">Volver a la página principal</a>
+  
   <script>
-    // Función para generar una frase aleatoria del metal
+    // Actualizar el reloj en tiempo real
+    function updateClock() {
+      const now = new Date();
+      const timeString = now.toLocaleTimeString();
+      $("#clock").text("Hora de Metal: " + timeString);
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+    
+    // Generador de Frase del Metal
     function generateQuote() {
-      var quotes = [
+      const quotes = [
         "El metal es vida, es fuerza y rebeldía.",
         "La música del metal es el rugido del espíritu indomable.",
         "Entre distorsiones y solos, encontramos la libertad.",
         "La pasión por el metal no conoce límites ni fronteras.",
         "El metal es el grito de la verdad en un mundo silencioso."
       ];
-      var randomIndex = Math.floor(Math.random() * quotes.length);
+      const randomIndex = Math.floor(Math.random() * quotes.length);
       document.getElementById("quote").innerText = quotes[randomIndex];
     }
-
-    // Función para mostrar el mensaje personalizado según el género metal elegido
+    
+    // Encuesta de Género
     function showSurveyResult() {
-      var metalType = document.getElementById('metalStyle').value;
-      var message = "";
+      const metalType = document.getElementById("metalStyle").value;
+      let message = "";
       switch(metalType) {
         case "Thrash":
-          message = "¡Increíble elección! El Thrash Metal es pura adrenalina y caos controlado. ¡Siente la velocidad!";
+          message = "¡Increíble elección! El Thrash Metal es pura adrenalina y caos controlado.";
           break;
         case "Heavy":
           message = "¡Fuerte y poderoso! El Heavy Metal es un clásico eterno lleno de riffs legendarios.";
@@ -120,52 +190,87 @@
           message = "Oscuro y místico. El Black Metal te envuelve en un aura de misterio y tradición.";
           break;
         case "Death":
-          message = "Brutal y sin concesiones. El Death Metal es la expresión máxima del caos y la intensidad.";
+          message = "Brutal y sin concesiones. El Death Metal es la máxima expresión del caos.";
           break;
         case "Nu":
-          message = "Moderno y enérgico. El Nu Metal fusiona estilos y te conecta con la vanguardia del metal.";
+          message = "Moderno y enérgico. El Nu Metal fusiona estilos con un toque contemporáneo.";
           break;
         case "Power":
-          message = "Épico y grandioso. El Power Metal es tu grito de batalla con melodías que inspiran.";
+          message = "Épico y grandioso. El Power Metal es tu grito de batalla con melodías inspiradoras.";
           break;
         case "Folk":
-          message = "Arraigado en la tradición y la cultura. El Folk Metal celebra lo ancestral con un toque moderno.";
+          message = "Arraigado en la tradición, el Folk Metal celebra lo ancestral con frescura.";
           break;
         case "Symphonic":
-          message = "Dramático y majestuoso. El Symphonic Metal transforma cada nota en una sinfonía de emociones.";
+          message = "Dramático y majestuoso. El Symphonic Metal es una sinfonía de emociones.";
           break;
         default:
           message = "¡Gracias por compartir tu pasión por el metal!";
       }
-      document.getElementById('surveyResult').innerText = message;
+      document.getElementById("surveyResult").innerText = message;
     }
-
-    // Función para generar un dato curioso aleatorio sobre el metal
+    
+    // Dato Curioso del Metal con imagen relacionada
     function generateFact() {
-      var facts = [
-        "Sabías que Black Sabbath es considerado el pionero del Heavy Metal.",
-        "Metallica es la banda de metal más vendida de la historia.",
-        "El logo de Iron Maiden es uno de los más icónicos y reconocidos en el mundo del metal.",
-        "El metal no solo es música, también es un movimiento cultural con festivales en todo el mundo.",
-        "Muchos músicos de metal utilizan máscaras y elementos teatrales en sus presentaciones para crear un ambiente único."
+      const facts = [
+        {
+          fact: "Black Sabbath es considerado el pionero del Heavy Metal.",
+          img: "black_sabbath.jpg"
+        },
+        {
+          fact: "Metallica es la banda de metal más vendida de la historia.",
+          img: "metallica.jpg"
+        },
+        {
+          fact: "El logo de Iron Maiden es uno de los más icónicos del metal.",
+          img: "iron_maiden.jpg"
+        },
+        {
+          fact: "El metal es un movimiento cultural con festivales en todo el mundo.",
+          img: "festival_metal.jpg"
+        },
+        {
+          fact: "Muchos músicos de metal utilizan máscaras y teatralidad en sus presentaciones.",
+          img: "mascaras_metal.jpg"
+        }
       ];
-      var randomIndex = Math.floor(Math.random() * facts.length);
-      document.getElementById("fact").innerText = facts[randomIndex];
+      const randomIndex = Math.floor(Math.random() * facts.length);
+      const selected = facts[randomIndex];
+      
+      // Actualizamos el texto del dato curioso
+      document.getElementById("fact").innerText = selected.fact;
+      
+      // Actualizamos la imagen relacionada y la mostramos
+      const factImg = document.getElementById("factImg");
+      factImg.src = selected.img;
+      factImg.style.display = "block";
     }
-
-    // Función para saludar al fan y conectarlo con la comunidad
+    
+    // Conexión de Fans
     function fanGreeting() {
-      var fanName = $('#fanName').val();
-      if (fanName.trim() === '') {
-        $('#fanGreeting').text('Por favor, ingresa tu nombre.');
+      const fanName = $("#fanName").val();
+      if (fanName.trim() === "") {
+        $("#fanGreeting").text("Por favor, ingresa tu nombre.");
       } else {
-        $('#fanGreeting').hide()
-          .text('¡Bienvenido, ' + fanName + '! Únete a la comunidad metalera y siente la pasión del metal. 🤘')
+        $("#fanGreeting").hide()
+          .text("¡Bienvenido, " + fanName + "! Únete a la comunidad metalera y siente la pasión del metal. 🤘")
           .fadeIn(500);
       }
     }
+    
+    // Easter Egg: Doble clic en el título para mensaje especial y reproducir sonido
+    document.getElementById("mainTitle").addEventListener("dblclick", function() {
+      alert("¡Metal Forever!\nSiente la fuerza del metal en cada latido.");
+      const audio = document.getElementById("metalSound");
+      if (audio) {
+        audio.currentTime = 0;
+        audio.play();
+      }
+    });
   </script>
-
+  
+  <!-- Audio para Easter Egg -->
+  <audio id="metalSound" src="metal_sound.mp3"></audio>
+  
 </body>
 </html>
-

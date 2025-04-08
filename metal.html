@@ -1,208 +1,291 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Mundo Metal</title>
-    <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="metal.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <style>
-        body {
-            font-family: 'Metal Mania', cursive;
-            text-align: center;
-            background-color: #222;
-            color: #fff;
-            padding: 20px;
-            transition: background-image 1s ease-in-out;
-        }
-        h1 {
-            animation: fadeIn 2s;
-            cursor: pointer;
-        }
-        .btn {
-            padding: 10px 20px;
-            background-color: #555;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin: 5px;
-        }
-        .btn:hover {
-            background-color: #999;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        #clock {
-            font-size: 18px;
-            margin-top: 10px;
-        }
-        #metalIcon {
-    width: 200px;
-    height: 200px;
-    margin: 20px auto;
-    display: block;
-
-
-        }
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        #metalIcon {
-            animation: spin 5s linear infinite;
-        }
-        .mood-section {
-            border: 1px solid #555;
-            padding: 10px;
-            margin: 20px auto;
-            width: 300px;
-            border-radius: 5px;
-            background-color: #333;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Mundo Metal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="metal.css">
+  <style>
+    :root {
+      --primary-bg: #222;
+      --secondary-bg: #333;
+      --accent: #e63946;
+      --btn-bg: #555;
+      --btn-hover: #999;
+    }
+    body {
+      font-family: 'Metal Mania', cursive;
+      text-align: center;
+      background: var(--primary-bg);
+      color: #fff;
+      padding: 20px;
+      margin: 0;
+      transition: background-image 1s ease-in-out;
+    }
+    h1, h2 {
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 3rem;
+      animation: fadeIn 2s;
+      cursor: pointer;
+      text-shadow: 3px 3px 8px rgba(0,0,0,0.7);
+      margin-bottom: 20px;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    p {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+    .btn {
+      padding: 15px 30px;
+      background: linear-gradient(45deg, var(--btn-bg), var(--accent));
+      color: #fff;
+      border: 2px solid #fff;
+      border-radius: 10px;
+      cursor: pointer;
+      margin: 10px;
+      font-size: 1.2rem;
+      transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    }
+    .btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px var(--accent);
+      background: linear-gradient(45deg, var(--accent), var(--btn-hover));
+    }
+    #clock {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+    #metalIcon {
+      width: 200px;
+      height: 200px;
+      margin: 20px auto;
+      display: block;
+      border-radius: 50%;
+      border: 3px solid var(--accent);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    #metalIcon:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px var(--accent);
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    #metalIcon {
+      animation: spin 5s linear infinite;
+    }
+    .mood-section {
+      border: 2px solid var(--accent);
+      padding: 15px;
+      margin: 20px auto;
+      width: 320px;
+      border-radius: 10px;
+      background: var(--secondary-bg);
+      transition: transform 0.3s ease;
+    }
+    .mood-section:hover {
+      transform: scale(1.05);
+    }
+    select {
+      font-size: 1.2rem;
+      padding: 10px;
+      border-radius: 5px;
+      margin: 10px;
+      background-color: var(--btn-bg);
+      color: #fff;
+      border: none;
+      transition: background-color 0.3s;
+    }
+    #info-apartado p {
+      font-size: 1.3rem;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      border-radius: 10px;
+    }
+  </style>
 </head>
 <body>
-    <!-- Título interactivo -->
-    <h1 id="mainTitle">Mundo del Metal</h1>
-    <!-- Reloj en tiempo real -->
-    <div id="clock"></div>
-    <!-- Icono rotatorio -->
-    <img id="metalIcon" src="metal_icon.jpg" alt="Metal Icon">
-
-    <!-- Introducción -->
-    <h2>Bienvenido al universo del Metal</h2>
-    <p>Descubre todo sobre los géneros, la historia, los eventos y mucho más.</p>
-
-    <!-- Apartados -->
-    <h2>Selecciona un Apartado:</h2>
-    <label for="apartado">Apartado:</label>
-    <select id="apartado" name="apartado">
-        <option value="generos">Géneros</option>
-        <option value="historia">Historia</option>
-        <option value="eventos">Eventos</option>
-        <option value="mercancia">Mercancía</option>
-        <option value="bandas">Bandas Icónicas</option>
-        <option value="recomendaciones">Recomendaciones Musicales</option>
-        <option value="galeria">Galería</option>
-    </select>
-    <br><br>
-
-    <!-- Información sobre el apartado seleccionado -->
-    <h2>Información:</h2>
-    <div id="info-apartado">
-        <p>Elige un apartado para conocer más sobre el fascinante mundo del metal.</p>
-    </div>
-    <br><br>
-
-    <!-- Nueva dinámica: Metal Mood -->
-    <div class="mood-section">
-       <h2>Metal Mood: ¿Cómo te sientes hoy?</h2>
-       <label><input type="radio" name="mood" value="energetico"> Enérgico</label>
-       <label><input type="radio" name="mood" value="melancolico"> Melancólico</label>
-       <label><input type="radio" name="mood" value="rebelde"> Rebelde</label>
-       <label><input type="radio" name="mood" value="apasionado"> Apasionado</label>
-       <br>
-       <button class="btn" onclick="showMood()">Mostrar Metal Mood</button>
-       <p id="moodResult"></p>
-    </div>
-
-    <!-- Botones de navegación -->
-    <button id="explorar" onclick="location.href='explorar.html'">Explorar Mundo Metal</button>
-    <button id="comprar" onclick="location.href='mercancia.html'">Comprar Mercancía</button>
-    <button id="test" onclick="location.href='test.html'">Test</button>
-
-    <br><br>
-    <a href="index.html">Volver al menú</a>
-
-    <script>
-        // Actualizar el reloj en tiempo real
-        function updateClock() {
-            const now = new Date();
-            const timeString = now.toLocaleTimeString();
-            document.getElementById("clock").innerText = "Hora de Metal: " + timeString;
+  <!-- Título interactivo con Easter Egg -->
+  <h1 id="mainTitle">Mundo del Metal</h1>
+  
+  <!-- Reloj en tiempo real -->
+  <div id="clock"></div>
+  
+  <!-- Icono rotatorio -->
+  <img id="metalIcon" src="metal_icon.jpg" alt="Metal Icon">
+  
+  <!-- Introducción -->
+  <h2>Bienvenido al universo del Metal</h2>
+  <p>Descubre la esencia de este poderoso género: cultura, historia, eventos y experiencias inolvidables.</p>
+  
+  <!-- Apartados -->
+  <h2>Selecciona un Apartado:</h2>
+  <label for="apartado">Apartado:</label>
+  <select id="apartado" name="apartado">
+    <option value="generos">Géneros</option>
+    <option value="historia">Historia</option>
+    <option value="eventos">Eventos</option>
+    <option value="bandas">Bandas Icónicas</option>
+    <option value="recomendaciones">Recomendaciones Musicales</option>
+    <option value="galeria">Galería</option>
+    <option value="metalmod">Metal Mod</option>
+  </select>
+  <br><br>
+  
+  <!-- Información sobre el apartado seleccionado -->
+  <h2>Información:</h2>
+  <div id="info-apartado">
+    <p>
+      Selecciona un apartado para ver información detallada sobre el mundo del metal.
+    </p>
+  </div>
+  <br><br>
+  
+  <!-- Dinámica: Metal Mood -->
+  <div class="mood-section">
+    <h2>Metal Mood: ¿Cómo te sientes hoy?</h2>
+    <label><input type="radio" name="mood" value="energetico"> Enérgico</label>
+    <label><input type="radio" name="mood" value="melancolico"> Melancólico</label>
+    <label><input type="radio" name="mood" value="rebelde"> Rebelde</label>
+    <label><input type="radio" name="mood" value="apasionado"> Apasionado</label>
+    <br>
+    <button class="btn" onclick="showMood()">Mostrar Metal Mood</button>
+    <p id="moodResult"></p>
+  </div>
+  
+  <!-- Botones de navegación -->
+  <button id="explorar" class="btn" onclick="location.href='explorar.html'">Explorar Mundo Metal</button>
+  <button id="comprar" class="btn" onclick="location.href='mercancia.html'">Comprar Mercancía</button>
+  <button id="test" class="btn" onclick="location.href='test.html'">Test</button>
+  
+  <br><br>
+  <a href="index.html" class="btn">Volver al menú</a>
+  
+  <script>
+    // Actualizar el reloj en tiempo real
+    function updateClock() {
+      const now = new Date();
+      const timeString = now.toLocaleTimeString();
+      document.getElementById("clock").innerText = "Hora de Metal: " + timeString;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+    
+    // Cuando se cambia el apartado, se muestra información personalizada
+    $("#apartado").change(function(){
+      let selected = $(this).val();
+      let info = "", bgImage = "";
+      switch(selected) {
+        case "generos":
+          info = "Géneros:<br>" +
+                 "Explora la diversidad del metal, desde el agresivo Thrash y Death hasta el melódico Symphonic y Folk. <br>" +
+                 "Cada subgénero tiene su propia vibra y ritmo que impacta a nivel emocional y cultural.";
+          bgImage = "url('bg_generos.png')";
+          break;
+        case "historia":
+          info = "Historia:<br>" +
+                 "El metal surgió en los años 60, marcado por la influencia del blues, el rock y la rebeldía. <br>" +
+                 "Bandas pioneras como Black Sabbath transformaron el sonido y la actitud, abriendo el camino para una evolución que ha incluido movimientos como el Thrash, Doom, y Symphonic Metal. <br>" +
+                 "Descubre cómo este género ha influido en la cultura popular y ha sido un reflejo de las tensiones sociales a lo largo del tiempo.";
+          bgImage = "url('bg_historia.png')";
+          break;
+        case "eventos":
+          info = "Eventos:<br>" +
+                 "Infórmate sobre festivales y conciertos legendarios que han definido la cultura metalera.<br>" +
+                 "Eventos como Wacken Open Air y Hellfest reúnen a miles de fans en una celebración de la pasión y la energía del metal.";
+          bgImage = "url('bg_eventos.jpg')";
+          break;
+        case "bandas":
+          info = "Bandas Icónicas:<br>" +
+                 "Sumérgete en la historia de las bandas que han marcado el camino del metal, desde Black Sabbath, Metallica e Iron Maiden, hasta Slipknot y Tool. <br>" +
+                 "Cada banda cuenta una historia de innovación y rebeldía.";
+          bgImage = "url('bg_bandas.jpg')";
+          break;
+        case "recomendaciones":
+          info = "Recomendaciones Musicales:<br>" +
+                 "Escucha álbumes esenciales y descubre nuevos lanzamientos recomendados por expertos y fans del metal. <br>" +
+                 "De los clásicos a las propuestas vanguardistas, encuentra el sonido perfecto para cada estado de ánimo.";
+          bgImage = "url('bg_recomendaciones.jpg')";
+          break;
+        case "galeria":
+          info = "Galería:<br>" +
+                 "Disfruta de una colección visual con imágenes icónicas<br>" +
+                 "<img src='galeria1.jpg' alt='Imagen 1' style='width:200px;margin:5px;'><br>" +
+                 "<img src='galeria2.jpg' alt='Imagen 2' style='width:200px;margin:5px;'><br>" +
+                 "<img src='galeria3.jpg' alt='Imagen 3' style='width:200px;margin:5px;'><br>" +
+                 "Revive los momentos históricos y la estética del mundo metal.";
+          bgImage = "url('bg_galeria.jpg')";
+          break;
+        case "metalmod":
+          info = "Metal Mod:<br>" +
+                 "Esta sección se dedica a la fusión innovadora entre el metal y la tecnología digital.<br>" +
+                 "Descubre cómo el metal se adapta a la era moderna con propuestas experimentales y colaboraciones vanguardistas.";
+          bgImage = "url('bg_metalmod.jpg')";
+          break;
+        default:
+          info = "Selecciona un apartado para ver más información.";
+          bgImage = "";
+      }
+      $("#info-apartado").fadeOut(300, function(){
+        // Reemplazamos saltos de línea (\n) por <br> en el contenido, si fuera necesario
+        const htmlContent = info; // info ya contiene <br>
+        $(this).html("<p>" + htmlContent + "</p>").fadeIn(300);
+      });
+      $("body").css("background-image", bgImage);
+    });
+    
+    // Función para mostrar el mensaje basado en la selección del Metal Mood
+    function showMood() {
+      const moods = document.getElementsByName('mood');
+      let selectedMood = "";
+      for (let mood of moods) {
+        if (mood.checked) {
+          selectedMood = mood.value;
+          break;
         }
-        setInterval(updateClock, 1000);
-        updateClock(); // Llamada inicial
-
-        // Funcionalidad de exploración de apartados con cambio dinámico de fondo
-        document.getElementById('apartado').onchange = function() {
-            const selected = document.getElementById('apartado').value;
-            let info = "";
-            let bgImage = "";
-            switch (selected) {
-                case "generos":
-                    info = "El metal tiene muchos subgéneros como Thrash, Death, Power, Heavy y más.";
-                    bgImage = "url('bg_generos.jpg')";
-                    break;
-                case "historia":
-                    info = "El metal nació en los años 60 y ha evolucionado hasta convertirse en un movimiento global.";
-                    bgImage = "url('bg_historia.jpg')";
-                    break;
-                case "eventos":
-                    info = "Eventos importantes incluyen Wacken Open Air, Hellfest y otros festivales legendarios.";
-                    bgImage = "url('bg_eventos.jpg')";
-                    break;
-                case "mercancia":
-                    info = "Compra camisetas, discos, vinilos y más de tus bandas favoritas.";
-                    bgImage = "url('bg_mercancia.jpg')";
-                    break;
-                case "bandas":
-                    info = "Desde Black Sabbath hasta Slipknot, conoce las bandas que marcaron historia.";
-                    bgImage = "url('bg_bandas.jpg')";
-                    break;
-                case "recomendaciones":
-                    info = "Explora álbumes esenciales para todo fan del metal.";
-                    bgImage = "url('bg_recomendaciones.jpg')";
-                    break;
-                case "galeria":
-                    info = "Disfruta imágenes de conciertos, álbumes y más.";
-                    bgImage = "url('bg_galeria.jpg')";
-                    break;
-                default:
-                    info = "Selecciona un apartado para ver más información.";
-                    bgImage = "";
-            }
-            document.getElementById('info-apartado').innerHTML = `<p>${info}</p>`;
-            // Cambia el fondo del body dinámicamente, si se proporcionó una imagen
-            document.body.style.backgroundImage = bgImage;
-        };
-
-        // Función para mostrar el mensaje basado en la selección del Metal Mood
-        function showMood() {
-            const moods = document.getElementsByName('mood');
-            let selectedMood = "";
-            for (let mood of moods) {
-                if (mood.checked) {
-                    selectedMood = mood.value;
-                    break;
-                }
-            }
-            let moodMessage = "";
-            switch(selectedMood) {
-                case "energetico":
-                    moodMessage = "¡Vibra con la energía del metal! Hoy eres pura adrenalina.";
-                    break;
-                case "melancolico":
-                    moodMessage = "La melancolía del metal te envuelve en un aura de introspección.";
-                    break;
-                case "rebelde":
-                    moodMessage = "¡Rompe las reglas y sé libre! El metal es tu grito rebelde.";
-                    break;
-                case "apasionado":
-                    moodMessage = "El fuego de tu pasión ilumina el mundo del metal.";
-                    break;
-                default:
-                    moodMessage = "Elige cómo te sientes para descubrir tu Metal Mood.";
-            }
-            document.getElementById('moodResult').innerText = moodMessage;
-        }
-
-        // Easter Egg: Doble clic en el título para mostrar un mensaje especial
-        document.getElementById('mainTitle').addEventListener("dblclick", function() {
-            alert("¡Metal Forever! \nSiente la fuerza del metal en cada latido.");
-        });
-    </script>
+      }
+      let moodMessage = "";
+      switch(selectedMood) {
+        case "energetico":
+          moodMessage = "¡Vibra con la energía del metal! \n\nRecomendamos géneros como Nu Metal e Industrial, y bandas como Linkin Park y Rammstein.";
+          break;
+        case "melancolico":
+          moodMessage = "La melancolía envuelve tu alma. \n\nExplora Doom Metal y bandas como Paradise Lost y My Dying Bride.";
+          break;
+        case "rebelde":
+          moodMessage = "¡Rompe las reglas y sé libre! \n\nSumérgete en el punk metal y el crossover con bandas como Suicidal Tendencies y Municipal Waste.";
+          break;
+        case "apasionado":
+          moodMessage = "El fuego de tu pasión ilumina el metal. \n\nRecomendamos Power Metal y bandas como DragonForce y Blind Guardian.";
+          break;
+        default:
+          moodMessage = "Elige cómo te sientes para descubrir tu Metal Mood.";
+      }
+      // Reemplazamos saltos de línea "\n" por <br> solo para mostrar en HTML
+      $("#moodResult").hide().html(moodMessage.replace(/\n/g,"<br>")).fadeIn(500);
+    }
+    
+    // Easter Egg: Doble clic en el título para mensaje especial y reproducir sonido
+    document.getElementById("mainTitle").addEventListener("dblclick", function() {
+      alert("¡Metal Forever!\nSiente la fuerza del metal en cada latido.");
+      const audio = document.getElementById("metalSound");
+      if (audio) {
+        audio.currentTime = 0;
+        audio.play();
+      }
+    });
+  </script>
+  
+  <!-- Audio para Easter Egg -->
+  <audio id="metalSound" src="metal_sound.mp3"></audio>
+  
 </body>
 </html>
