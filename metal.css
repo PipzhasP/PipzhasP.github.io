@@ -1,9 +1,5 @@
-@media (max-width: 600px) {
-    .main {
-      flex-direction: column;
-    }
-  }
-  body {
+/* Estilos básicos para el body */
+body {
     background-color: #1a1a1a; /* Fondo sólido */
     font-family: 'Metal Mania', cursive; /* Fuente temática del metal */
     color: #e0e0e0;
@@ -11,6 +7,7 @@
     padding: 0;
 }
 
+/* Estilo del encabezado h1 */
 h1 {
     color: #ff0000;
     font-size: 56px; /* Tamaño destacado */
@@ -18,6 +15,7 @@ h1 {
     transform: rotate(-3deg); /* Efecto inclinado */
 }
 
+/* Estilos del formulario */
 form {
     background: linear-gradient(180deg, #2a2a2a, #1a1a1a); /* Degradado temático */
     border: 5px double #b22222; /* Borde rojo impactante */
@@ -27,6 +25,7 @@ form {
     width: 80%; /* Tamaño dinámico para adaptarse a pantallas */
 }
 
+/* Estilos del botón */
 button {
     background: linear-gradient(45deg, #ff4500, #ff0000); /* Fondo llamativo */
     box-shadow: 0px 0px 15px #ff8c00, 0px 0px 10px #a40000 inset; /* Efecto brillante */
@@ -39,17 +38,20 @@ button {
     transition: transform 0.3s, box-shadow 0.3s; /* Suavidad en efectos */
 }
 
+/* Efectos al pasar el mouse por el botón */
 button:hover {
     background: linear-gradient(45deg, #a40000, #7b0000); /* Cambio al pasar el mouse */
     box-shadow: 0px 0px 20px #dd1818; /* Intensifica el brillo */
     transform: scale(1.1); /* Efecto de zoom */
 }
 
+/* Estilos para las etiquetas */
 label {
     font-style: italic; /* Un toque inclinado */
     text-shadow: 1px 1px #7b0000; /* Sombra temática */
 }
 
+/* Estilos para select e input */
 select, input {
     background-color: #2a2a2a; /* Fondo oscuro */
     border: 2px solid #b22222; /* Borde rojo */
@@ -59,10 +61,12 @@ select, input {
     width: 100%; /* Ajuste responsivo */
 }
 
+/* Efecto de hover para select e input */
 select:hover, input:hover {
     border-color: #ff0000; /* Cambiar borde al pasar el mouse */
 }
 
+/* Estilos para el apartado de información */
 #info-apartado {
     border: 2px solid #b22222; /* Borde temático */
     padding: 10px;
@@ -70,4 +74,62 @@ select:hover, input:hover {
     background-color: #1a1a1a; /* Fondo oscuro */
     color: #e0e0e0;
     text-align: center;
+}
+
+/* Media Query para pantallas pequeñas (móviles) */
+@media (max-width: 600px) {
+    body {
+        background-color: #121212; /* Fondo más oscuro en pantallas pequeñas */
+    }
+
+    h1 {
+        font-size: 32px; /* Reducir el tamaño del encabezado */
+        text-shadow: 2px 2px 6px #7b0000, 0 0 4px #fc0202; /* Ajustar la sombra */
+        transform: rotate(0); /* Eliminar el efecto de rotación */
+    }
+
+    form {
+        width: 90%; /* Aumentar el ancho del formulario en pantallas pequeñas */
+        margin: 10px; /* Ajustar márgenes */
+        padding: 15px; /* Reducir el padding */
+    }
+
+    button {
+        width: 100%; /* Botón de ancho completo en móviles */
+        padding: 15px; /* Aumentar el padding para hacer más fácil el clic */
+    }
+
+    #info-apartado {
+        padding: 15px; /* Aumentar el padding en pantallas pequeñas */
+    }
+}
+
+/* Media Query para pantallas medianas (tabletas) */
+@media (min-width: 601px) and (max-width: 1024px) {
+    h1 {
+        font-size: 48px; /* Tamaño mediano para tabletas */
+    }
+
+    form {
+        width: 70%; /* Formulario más pequeño en tabletas */
+    }
+
+    button {
+        width: 100%; /* Botón de ancho completo en tabletas también */
+    }
+
+    #info-apartado {
+        padding: 12px; /* Ajuste de padding en tabletas */
+    }
+}
+
+/* Media Query para pantallas grandes (escritorios) */
+@media (min-width: 1025px) {
+    form {
+        width: 60%; /* Formulario más pequeño en pantallas grandes */
+    }
+
+    button {
+        width: auto; /* Botón de tamaño normal en pantallas grandes */
+    }
 }
