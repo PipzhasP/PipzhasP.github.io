@@ -4,9 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Test: ¿Qué tanto sabes del metal?</title>
+  <button onclick="document.getElementById('background-audio').play()">▶️</button>
+        <button onclick="document.getElementById('background-audio').pause()">⏹️</button>
+        <audio id="background-audio" loop>
+            <source src="Walk.ogg" type="audio/ogg">
+        </audio>
   <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <link rel="stylesheet" type="text/css" href="metal.css">
+  <link rel="stylesheet" type="text/css" href="mundo-metal.css">
   <style>
     :root {
       --bg-color: #111;
@@ -261,4 +267,5 @@
   <button type="button" id="downloadPDFBtn" class="btn" onclick="generatePDF()">Descargar Resultados en PDF</button>
   
   <a href="metal.html">Volver a la página principal</a>
-  
+</body>
+</html>

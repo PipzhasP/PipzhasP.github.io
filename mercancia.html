@@ -2,83 +2,94 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Comprar Mercancía - Mundo Metal</title>
+  <button onclick="document.getElementById('background-audio').play()">▶️</button>
+        <button onclick="document.getElementById('background-audio').pause()">⏹️</button>
+        <audio id="background-audio" loop>
+            <source src="Cigaro.ogg" type="audio/ogg">
+        </audio>
   <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="metal.css">
+  <link rel="stylesheet" type="text/css" href="mundo-metal.css">
   <style>
-    body {
-      font-family: 'Metal Mania', cursive;
-      text-align: center;
-      background-color: #222;
-      color: #fff;
-      padding: 20px;
-    }
-    h1, h2 {
-      margin-bottom: 20px;
-    }
-    .gallery img {
-      width: 150px;
-      height: 150px;
-      margin: 10px;
-      cursor: pointer;
-    }
-    .btn {
-      padding: 10px 20px;
-      background-color: #555;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      margin: 10px 0;
-    }
-    .btn:hover {
-      background-color: #999;
-    }
-    .section-container {
-      margin-top: 20px;
+    .gallery-container {
+      overflow-x: auto;
+      white-space: nowrap;
       padding: 10px;
-      text-align: left;
+      border: 2px solid #444;
+      border-radius: 10px;
+      background-color: #111;
+      margin-bottom: 30px;
+    }
+  
+    .gallery img {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      margin: 10px;
       display: inline-block;
-      background-color: #333;
-      border-radius: 5px;
-      max-width: 500px;
-      width: 100%;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 10px;
+      border: 2px solid #666;
     }
-    label {
-      display: block;
-      margin: 5px 0;
+  
+    .gallery img:hover {
+      transform: scale(1.1) rotate(-2deg);
+      box-shadow: 0 0 10px #ff0000aa;
     }
-    input[type="number"], input[type="text"] {
-      padding: 5px;
-      width: 100%;
-      margin-bottom: 10px;
-      border-radius: 3px;
-      border: 1px solid #555;
-      background-color: #fff;
-      color: #222;
+  
+    .gallery {
+      display: inline-flex;
+      align-items: center;
     }
   </style>
+  
 </head>
 <body>
-
   <h1>Mercancía Oficial del Mundo Metal</h1> 
-  <p>Consigue productos exclusivos de tus bandas favoritas.</p> 
-  <h2>Categorías Disponibles:</h2> <ul> <li>Camisetas y Sudaderas</li> 
-    <li>Discos y Vinilos</li> <li>Pósters y Stickers</li>
-     <li>Accesorios y Joyería</li> <li>Ediciones Especiales y Coleccionables</li>
-     </ul> <h2>Galería de Productos</h2> <div class="gallery"> <img src="camiseta-metallica.jpeg" alt="Camiseta Metallica"> <img src="vinilo-iron-maiden.jpg" alt="Vinilo Iron Maiden"> 
-    <img src="poster-slipknot.jpg" alt="Póster Slipknot"> </div>
-  <!-- Productos y total -->
-  <h2>Simula tu compra</h2>
-  <div class="section-container">
-    <p>Selecciona los artículos que deseas:</p>
-    <label><input type="checkbox" value="25" class="producto"> Camiseta - $25</label>
-    <label><input type="checkbox" value="40" class="producto"> Vinilo - $40</label>
-    <label><input type="checkbox" value="15" class="producto"> Póster - $15</label>
-    <button class="btn" onclick="calcularTotal()">Calcular Total</button>
-    <p id="total"></p>
+<h2>Categorías Disponibles:</h2>
+<ul>
+  <li>Camisetas y Sudaderas</li>
+  <li>Discos y Vinilos</li>
+  <li>Pósters y Stickers</li>
+  <li>Accesorios y Joyería</li>
+  <li>Ediciones Especiales y Coleccionables</li>
+  <li>Instrumentos Musicales</li>
+  <li>Libros y Revistas de Metal</li>
+  <li>Decoración para Metalheads</li>
+</ul>
+
+<h2>🎸 Galería de Productos</h2>
+<div class="gallery-container">
+  <div class="gallery">
+    <img src="camiseta-metallica.jpeg" alt="Camiseta Metallica">
+    <img src="vinilo-iron-maiden.jpg" alt="Vinilo Iron Maiden">
+    <img src="poster-slipknot.jpg" alt="Póster Slipknot">
+    <img src="guitarra-metal.jpg" alt="Guitarra estilo Metal">
+    <img src="coleccionable-lemmy.jpg" alt="Figura coleccionable Lemmy">
+    <img src="bajo-metal.jpg" alt="Bajo estilo Doom">
+    <img src="lampara-calaveras.jpg" alt="Lámpara temática">
+    <img src="libro-heavy-metal.jpg" alt="Libro historia del metal">
   </div>
+</div>
+
+<!-- PRODUCTOS ACTUALIZADOS -->
+<h2>Simula tu compra</h2>
+<div class="section-container">
+  <p>Selecciona los artículos que deseas:</p>
+  <label><input type="checkbox" value="25" class="producto"> Camiseta - $25</label>
+  <label><input type="checkbox" value="40" class="producto"> Vinilo - $40</label>
+  <label><input type="checkbox" value="15" class="producto"> Póster - $15</label>
+  <label><input type="checkbox" value="300" class="producto"> Guitarra estilo metal - $300</label>
+  <label><input type="checkbox" value="120" class="producto"> Bajo eléctrico estilo Doom - $120</label>
+  <label><input type="checkbox" value="35" class="producto"> Figura coleccionable Lemmy - $35</label>
+  <label><input type="checkbox" value="20" class="producto"> Lámpara calaveras - $20</label>
+  <label><input type="checkbox" value="18" class="producto"> Libro: Historia del Heavy Metal - $18</label>
+  <button class="btn" onclick="calcularTotal()">Calcular Total</button>
+  <p id="total"></p>
+</div>
+
 
   <!-- Detalles de Pago y Envío -->
   <h2>Detalles de Pago y Envío</h2>
@@ -220,20 +231,33 @@
     }
 
     // Función para buscar artículos
-    function buscarArticulo() {
-      const query = document.getElementById("buscador").value.toLowerCase();
-      let resultado = "";
-      if (query.includes("camiseta")) {
-        resultado = "Tenemos varias camisetas de Metallica, Iron Maiden y más.";
-      } else if (query.includes("vinilo")) {
-        resultado = "Encuentra vinilos clásicos de Megadeth, Slayer y otras bandas.";
-      } else if (query.includes("poster")) {
-        resultado = "Posters épicos de Slipknot, Black Sabbath y más disponibles.";
-      } else {
-        resultado = "Lo sentimos, no encontramos ese artículo.";
-      }
-      document.getElementById("resultado-busqueda").innerText = resultado;
-    }
+function buscarArticulo() {
+  const query = document.getElementById("buscador").value.toLowerCase();
+  let resultado = "";
+
+  if (query.includes("camiseta")) {
+    resultado = "Tenemos varias camisetas de Metallica, Iron Maiden y más.";
+  } else if (query.includes("vinilo")) {
+    resultado = "Encuentra vinilos clásicos de Megadeth, Slayer y otras bandas.";
+  } else if (query.includes("poster")) {
+    resultado = "Posters épicos de Slipknot, Black Sabbath y más disponibles.";
+  } else if (query.includes("guitarra")) {
+    resultado = "Guitarras eléctricas estilo metal listas para el escenario.";
+  } else if (query.includes("bajo")) {
+    resultado = "Bajos con un sonido oscuro y potente, ideales para doom.";
+  } else if (query.includes("coleccionable") || query.includes("figura")) {
+    resultado = "Coleccionables de leyendas como Lemmy, Ozzy, y más.";
+  } else if (query.includes("libro")) {
+    resultado = "Explora libros sobre la historia del metal, biografías y más.";
+  } else if (query.includes("lámpara") || query.includes("decoración")) {
+    resultado = "Decoración oscura y temática para tu cueva metalera.";
+  } else {
+    resultado = "Lo sentimos, no encontramos ese artículo.";
+  }
+
+  document.getElementById("resultado-busqueda").innerText = resultado;
+}
+
   </script>
 
 </body>

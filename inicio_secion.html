@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro o Inicio de Sesión</title>
+  <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="metal.css">
+  <link rel="stylesheet" type="text/css" href="mundo-metal.css">
+  <style>
+    /* Estilos personalizados */
+    body {
+      font-family: 'Metal Mania', cursive;
+      text-align: center;
+      background: linear-gradient(135deg, #111, #333);
+      color: #f1faee;
+      padding: 20px;
+    }
+    form {
+      margin: auto;
+      max-width: 400px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 10px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #e63946;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 1.1em;
+    }
+    button:hover {
+      background-color: #e76f51;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Formulario de Registro</h1>
+<form id="registrationForm">
+  <label for="name">Nombre:</label>
+  <input type="text" id="name" placeholder="Ingresa tu nombre" required>
+
+  <label for="username">Nombre de usuario:</label>
+  <input type="text" id="username" placeholder="Ingresa tu nombre de usuario" required>
+
+  <label for="emailOrPhone">Correo o Teléfono:</label>
+  <input type="text" id="emailOrPhone" placeholder="Ingresa tu correo o teléfono" required>
+
+  <label for="comment">Comentario:</label>
+  <textarea id="comment" rows="4" placeholder="Escribe un comentario" required></textarea>
+
+  <button type="button" id="generatePDF">Generar PDF</button>
+  <button type="button" id="sendEmail">Enviar Confirmación</button>
+</form>
+
+<script>
+  function validateForm() {
+    const name = document.getElementById("name").value;
+    const username = document.getElementById("username").value;
+    const emailOrPhone = document.getElementById("emailOrPhone").value;
+    const comment = document.getElementById("comment").value;
+
+    if (!name || !username || !emailOrPhone || !comment) {
+      alert("Por favor completa todos los campos.");
+      return false;
+    }
+    return true;
+  }
+
+  // Función para generar el PDF
+  document.getElementById("generatePDF").addEventListener("click", () => {
+    if (!validateForm()) return;
+
+    const name = document.getElementById("name").value;
+    const username = document.getElementById("username").value;
+    const emailOrPhone = document.getElementById("emailOrPhone").value;
+    const comment = document.getElementById("comment").value;
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    doc.setFontSize(16);
+    doc.text("Confirmación de Registro", 105, 20, { align: "center" });
+    doc.setFontSize(12);
+    doc.text(`Nombre: ${name}`, 10, 40);
+    doc.text(`Usuario: ${username}`, 10, 50);
+    doc.text(`Correo o Teléfono: ${emailOrPhone}`, 10, 60);
+    doc.text("Comentario:", 10, 70);
+    doc.text(comment, 10, 80, { maxWidth: 190 });
+
+    // Guardar el PDF
+    doc.save("Confirmacion_Registro.pdf");
+
+    // Redirigir al archivo "metal.html"
+    window.location.href = "metal.html";
+  });
+
+  // Función para enviar un correo simulado
+  document.getElementById("sendEmail").addEventListener("click", () => {
+    if (!validateForm()) return;
+
+    const name = document.getElementById("name").value;
+    const username = document.getElementById("username").value;
+    const emailOrPhone = document.getElementById("emailOrPhone").value;
+    const comment = document.getElementById("comment").value;
+
+    alert(`Confirmación enviada a:\nCorreo/Teléfono: ${emailOrPhone}\n\nInformación:\nNombre: ${name}\nUsuario: ${username}\nComentario: ${comment}`);
+
+    // Redirigir al archivo "metal.html"
+    window.location.href = "metal.html";
+  });
+</script>
+
+</body>
+</html>

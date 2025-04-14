@@ -1,0 +1,138 @@
+/* === FUENTES Y ESTILO BASE === */
+@import url('https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap');
+
+body {
+  font-family: 'Metal Mania', cursive;
+  background: radial-gradient(circle, #000000 30%, #1a1a1a 100%);
+  color: #fff;
+  margin: 0;
+  overflow-x: hidden;
+  animation: flashBg 15s infinite alternate;
+}
+
+/* === CABECERA CON FUEGO === */
+header {
+  background: linear-gradient(45deg, #222, #111);
+  padding: 30px 10px;
+  text-align: center;
+  border-bottom: 4px solid #e63946;
+  animation: pulseGlow 2s infinite;
+}
+
+h1 {
+  font-size: 4rem;
+  color: #e63946;
+  text-shadow: 0 0 10px #ff004f, 0 0 20px #ff004f;
+  animation: shakeTitle 2s infinite;
+}
+
+/* === MENÚ LATERAL DESLIZANTE === */
+nav {
+  background: repeating-linear-gradient(
+    45deg,
+    #000,
+    #111 10px,
+    #222 10px,
+    #111 20px
+  );
+  box-shadow: 5px 0 10px #e63946;
+}
+
+nav a {
+  color: #e63946;
+  font-size: 1.2rem;
+  transition: all 0.3s;
+  animation: flickerText 1.5s infinite alternate;
+}
+
+nav a:hover {
+  background-color: #ff004f;
+  color: #fff;
+  transform: scale(1.1) rotate(-2deg);
+}
+
+/* === CONTENIDO CENTRAL === */
+.content {
+  background: linear-gradient(to bottom right, #222, #111);
+  border: 4px double #ff004f;
+  border-radius: 15px;
+  padding: 25px;
+  animation: heartbeat 3s infinite;
+}
+
+.content img {
+  animation: spinIn 2s ease-out, borderPulse 3s infinite;
+}
+
+/* === BOTÓN DE VOLVER === */
+.go-back-btn {
+  background: #ff004f;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  color: #fff;
+  border-radius: 8px;
+  margin: 30px auto;
+  display: block;
+  cursor: pointer;
+  font-family: 'Metal Mania', cursive;
+  box-shadow: 0 0 15px #ff004f;
+  animation: bounce 1s infinite alternate;
+}
+
+.go-back-btn:hover {
+  transform: scale(1.1) rotate(3deg);
+  background: #e63946;
+}
+
+/* === ANIMACIONES PERSONALIZADAS === */
+
+@keyframes shakeTitle {
+  0% { transform: rotate(0); }
+  25% { transform: rotate(1deg); }
+  50% { transform: rotate(-1deg); }
+  75% { transform: rotate(1deg); }
+  100% { transform: rotate(0); }
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 10px #ff004f; }
+  50% { box-shadow: 0 0 30px #ff004f, 0 0 50px #ff004f inset; }
+  100% { box-shadow: 0 0 10px #ff004f; }
+}
+
+@keyframes flickerText {
+  0% { opacity: 0.8; text-shadow: 0 0 5px #e63946; }
+  50% { opacity: 1; text-shadow: 0 0 15px #ff004f; }
+  100% { opacity: 0.8; text-shadow: 0 0 5px #e63946; }
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  20% { transform: scale(1.05); }
+  40% { transform: scale(1); }
+  60% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes spinIn {
+  from { transform: scale(0) rotate(360deg); opacity: 0; }
+  to { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes borderPulse {
+  0% { border: 3px solid #ff004f; }
+  50% { border: 3px dashed #fff; }
+  100% { border: 3px solid #ff004f; }
+}
+
+@keyframes bounce {
+  from { transform: translateY(0); }
+  to { transform: translateY(-10px); }
+}
+
+@keyframes flashBg {
+  0% { background-color: #000; }
+  50% { background-color: #1c1c1c; }
+  100% { background-color: #000; }
+}

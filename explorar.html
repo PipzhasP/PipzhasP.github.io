@@ -2,105 +2,79 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Explorar Mundo Metal</title>
+  <button onclick="document.getElementById('background-audio').play()">▶️</button>
+        <button onclick="document.getElementById('background-audio').pause()">⏹️</button>
+        <audio id="background-audio" loop>
+            <source src="Holy Wars...The Punishment Due (2004 Remix).ogg" type="audio/ogg">
+        </audio>
   <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <link rel="stylesheet" type="text/css" href="metal.css">
-  <style>
-    :root {
-      --primary-bg: #222;
-      --secondary-bg: #333;
-      --accent: #e63946;
-      --btn-bg: #555;
-      --btn-hover: #999;
-    }
-    body {
-      font-family: 'Metal Mania', cursive;
-      text-align: center;
-      background-color: #222;
-      color: #fff;
-      padding: 20px;
-      margin: 0;
-      transition: background-image 1s ease-in-out;
-    }
-    h1, h2 {
-      margin-bottom: 20px;
-    }
-    h1 {
-      font-size: 3rem;
-      animation: fadeIn 2s;
-      cursor: pointer;
-      text-shadow: 2px 2px 8px #000;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    p {
-      font-size: 1.5rem;
-      margin-bottom: 20px;
-    }
-    .btn {
-      padding: 10px 20px;
-      background-color: #555;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin: 10px 5px;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-    }
-    .btn:hover {
-      background-color: #999;
-      transform: scale(1.05);
-    }
-    .section-container {
-      margin: 20px auto;
-      padding: 15px;
-      text-align: left;
-      background-color: #333;
-      border-radius: 5px;
-      max-width: 600px;
-      width: 90%;
-    }
-    label {
-      display: block;
-      margin: 5px 0;
-      font-weight: bold;
-    }
-    input[type="text"], input[type="number"], select {
-      padding: 8px;
-      width: 100%;
-      margin-bottom: 10px;
-      border-radius: 3px;
-      border: 1px solid #555;
-      background-color: #fff;
-      color: #222;
-      transition: border-color 0.3s ease;
-    }
-    input[type="text"]:focus, input[type="number"]:focus, select:focus {
-      border-color: #999;
-    }
-    iframe {
-      margin-top: 20px;
-      border: 2px solid #555;
-    }
-    #clock {
-      font-size: 1.2rem;
-      margin-top: 10px;
-    }
-    /* Imagen para el dato curioso */
-    #factImg {
-      display: none;
-      max-width: 300px;
-      margin: 20px auto;
-      border: 3px solid var(--accent);
-      border-radius: 10px;
-    }
-  </style>
-</head>
-<body>
-
+  <link rel="stylesheet" type="text/css" href="mundo-metal.css">
+  <head>
+    <!-- ...lo que ya tienes... -->
+    <style>
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes pulseGlow {
+        0% {
+          box-shadow: 0 0 5px var(--accent);
+        }
+        50% {
+          box-shadow: 0 0 20px var(--accent);
+        }
+        100% {
+          box-shadow: 0 0 5px var(--accent);
+        }
+      }
+      @keyframes bounce {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+  
+      h1:hover {
+        animation: bounce 0.6s;
+      }
+      .btn:hover {
+        animation: pulseGlow 1s infinite;
+      }
+      .section-container {
+        animation: fadeInUp 1s ease forwards;
+      }
+      #quote, #surveyResult, #fact, #fanGreeting {
+        animation: fadeInUp 0.8s ease forwards;
+      }
+      #factImg {
+        animation: slideInLeft 1s ease forwards;
+        transition: opacity 0.5s ease;
+      }
+    </style>
+  </head>
+  
   <!-- Título interactivo con Easter Egg -->
   <h1 id="mainTitle">Explorando el Mundo del Metal 🤘🔥</h1>
   <p>Bienvenido al lugar donde el metal es más que música: es cultura, historia y pasión.</p>
@@ -153,6 +127,38 @@
   <a href="metal.html" class="btn">Volver a la página principal</a>
   
   <script>
+    // Añadir clase animada al generar frase
+function generateQuote() {
+  const quotes = [ /* ... */ ];
+  const randomIndex = Math.floor(Math.random() * quotes.length);
+  const quoteEl = document.getElementById("quote");
+  quoteEl.innerText = quotes[randomIndex];
+  quoteEl.style.animation = "none";
+  quoteEl.offsetHeight; // Trigger reflow
+  quoteEl.style.animation = "fadeInUp 0.8s ease";
+}
+
+// Añadir animación a la imagen del dato curioso
+function generateFact() {
+  const facts = [ /* ... */ ];
+  const randomIndex = Math.floor(Math.random() * facts.length);
+  const selected = facts[randomIndex];
+  const factEl = document.getElementById("fact");
+  const factImg = document.getElementById("factImg");
+
+  factEl.innerText = selected.fact;
+  factEl.style.animation = "none";
+  factEl.offsetHeight;
+  factEl.style.animation = "fadeInUp 0.8s ease";
+
+  factImg.src = selected.img;
+  factImg.style.display = "block";
+  factImg.style.opacity = 0;
+  factImg.offsetHeight;
+  factImg.style.opacity = 1;
+  factImg.style.animation = "slideInLeft 1s ease";
+}
+
     // Actualizar el reloj en tiempo real
     function updateClock() {
       const now = new Date();

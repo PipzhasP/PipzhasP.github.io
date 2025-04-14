@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Historia del Rock y el Metal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="metal.css">
+  <link rel="stylesheet" type="text/css" href="mundo-metal.css">
+
+  <style>
+  body {
+    font-family: 'Metal Mania', cursive;
+    background-color: #111;
+    color: #fff;
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  header {
+    background-color: #222;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    animation: slideDown 1s ease-out;
+  }
+
+  h1 {
+    font-size: 3rem;
+    text-shadow: 0 0 20px #e63946, 0 0 40px #e63946;
+    margin: 0;
+    animation: pulseFire 2s infinite alternate;
+  }
+
+  .menu-icon {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    cursor: pointer;
+    font-size: 2rem;
+    animation: bounce 1.5s infinite;
+  }
+
+  nav {
+    position: fixed;
+    left: -250px;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #000;
+    padding-top: 60px;
+    transition: left 0.5s ease;
+    z-index: 999;
+  }
+
+  nav.show {
+    left: 0;
+  }
+
+  nav a {
+    display: block;
+    color: #fff;
+    padding: 15px;
+    text-decoration: none;
+    border-bottom: 1px solid #444;
+    transition: background 0.3s, transform 0.3s;
+  }
+
+  nav a:hover {
+    background-color: #e63946;
+    transform: scale(1.1);
+  }
+
+  .content {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #222;
+    border-radius: 10px;
+    animation: fadeInScale 0.8s ease;
+  }
+
+  .content img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-top: 15px;
+    border: 3px solid #e63946;
+    box-shadow: 0 0 15px #e63946;
+    transition: transform 0.3s;
+  }
+
+  .content img:hover {
+    transform: scale(1.05);
+  }
+
+  .go-back-btn {
+    display: block;
+    margin: 30px auto;
+    padding: 12px 25px;
+    background-color: #e63946;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #e63946;
+    transition: background 0.3s, transform 0.3s;
+  }
+
+  .go-back-btn:hover {
+    background-color: #b02c35;
+    transform: scale(1.05);
+  }
+
+  @keyframes fadeInScale {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes slideDown {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+
+  @keyframes pulseFire {
+    0% {
+      text-shadow: 0 0 10px #e63946, 0 0 20px #e63946;
+    }
+    100% {
+      text-shadow: 0 0 20px #ff6f61, 0 0 40px #ff6f61;
+    }
+  }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <h1>Historia del Rock y el Metal 🎸🔥</h1>
+  </header>
+
+  <nav id="menu">
+    <a href="#" onclick="showGenre('general')">Historia del Rock y el Metal</a>
+    <a href="#" onclick="showGenre('rock')">Historia del género... Rock</a>
+    <a href="#" onclick="showGenre('metal')">Historia del género... Metal</a>
+    <a href="#" onclick="showGenre('heavy')">Historia del género... Heavy Metal</a>
+    <a href="#" onclick="showGenre('thrash')">Historia del género... Thrash Metal</a>
+    <a href="#" onclick="showGenre('black')">Historia del género... Black Metal</a>
+    <a href="#" onclick="showGenre('death')">Historia del género... Death Metal</a>
+    <a href="#" onclick="showGenre('prog')">Historia del género... Metal Progresivo</a>
+    <a href="#" onclick="showGenre('nu')">Historia del género... Nu Metal</a>
+  </nav>
+
+  <div class="content" id="genreContent">
+    <h2>Historia del Rock y el Metal</h2>
+    <p>La historia del rock y el metal es vasta y compleja. El rock and roll se originó en los Estados Unidos a finales de los años 40 y principios de los 50 como una mezcla de blues, jazz, country y gospel. Figuras como Chuck Berry, Little Richard, y Elvis Presley lo llevaron a la popularidad. En los años 60, el rock se diversificó en muchas direcciones con la invasión británica (The Beatles, The Rolling Stones), el folk rock (Bob Dylan), el psicodélico (Jimi Hendrix, The Doors) y el garage rock.
+
+    En los 70s, el rock progresivo (Pink Floyd, Yes), el glam (David Bowie, T. Rex), y el punk (Ramones, Sex Pistols) cambiaron el paisaje musical. En este mismo periodo, el heavy metal nació como un subgénero del rock con bandas como Black Sabbath, Led Zeppelin y Deep Purple, caracterizado por riffs pesados y temáticas oscuras.
+
+    Durante los 80s, el metal se ramificó en géneros como el thrash (Metallica, Slayer), el glam metal (Mötley Crüe, Poison), y el black metal y death metal en escenas underground de Europa y América. El hard rock también alcanzó nuevas alturas con bandas como Guns N' Roses y AC/DC.
+
+    Los 90s vieron el auge del grunge (Nirvana, Pearl Jam), el nu metal (Korn, Limp Bizkit), y una renovación del metal progresivo (Dream Theater, Tool). El rock alternativo se convirtió en la corriente principal con Radiohead, Red Hot Chili Peppers, entre otros.
+
+    En el siglo XXI, el rock y el metal han seguido evolucionando con fusiones con la electrónica, el metalcore, djent, post-metal, y una renovada escena underground global. A pesar de los cambios en la industria musical, el espíritu rebelde y potente del rock y el metal sigue vivo.
+    </p>
+    <img src="bg_historia.png" alt="Historia del Rock y Metal">
+  </div>
+  <button class="go-back-btn" onclick="location.href='metal.html'">Volver a la página principal</button>
+
+  <script>
+    
+    function toggleMenu() {
+      const menu = document.getElementById("menu");
+      menu.classList.toggle("show");
+    }
+
+    const data = {
+      general: {
+        text: `La historia del rock y el metal es vasta y compleja. El rock and roll se originó en los Estados Unidos a finales de los años 40 y principios de los 50 como una mezcla de blues, jazz, country y gospel. Figuras como Chuck Berry, Little Richard, y Elvis Presley lo llevaron a la popularidad. En los años 60, el rock se diversificó en muchas direcciones con la invasión británica (The Beatles, The Rolling Stones), el folk rock (Bob Dylan), el psicodélico (Jimi Hendrix, The Doors) y el garage rock.
+
+        En los 70s, el rock progresivo (Pink Floyd, Yes), el glam (David Bowie, T. Rex), y el punk (Ramones, Sex Pistols) cambiaron el paisaje musical. En este mismo periodo, el heavy metal nació como un subgénero del rock con bandas como Black Sabbath, Led Zeppelin y Deep Purple, caracterizado por riffs pesados y temáticas oscuras.
+
+        Durante los 80s, el metal se ramificó en géneros como el thrash (Metallica, Slayer), el glam metal (Mötley Crüe, Poison), y el black metal y death metal en escenas underground de Europa y América. El hard rock también alcanzó nuevas alturas con bandas como Guns N' Roses y AC/DC.
+
+        Los 90s vieron el auge del grunge (Nirvana, Pearl Jam), el nu metal (Korn, Limp Bizkit), y una renovación del metal progresivo (Dream Theater, Tool). El rock alternativo se convirtió en la corriente principal con Radiohead, Red Hot Chili Peppers, entre otros.
+
+        En el siglo XXI, el rock y el metal han seguido evolucionando con fusiones con la electrónica, el metalcore, djent, post-metal, y una renovada escena underground global. A pesar de los cambios en la industria musical, el espíritu rebelde y potente del rock y el metal sigue vivo.`,
+        img: "bg_historia.png"
+      },
+      rock: {
+        title: "Historia del género Rock",
+        text: `El rock tiene sus raíces en los años 50, como una fusión de estilos como el rhythm and blues, country y gospel. Artistas como Elvis Presley, Chuck Berry y Little Richard sentaron las bases del género. En los 60s, el rock evolucionó con la invasión británica liderada por The Beatles, The Rolling Stones y The Who. Los 70s vieron la diversificación del rock en subgéneros como el hard rock, el glam y el punk, con bandas como Led Zeppelin, Queen y The Ramones. En los 80s y 90s, el rock alternativo y el grunge tomaron protagonismo con Nirvana, Pearl Jam y Radiohead. Hoy, el rock continúa siendo una fuerza cultural global.`,
+        img: "bg_rock.jpg"
+      },
+      metal: {
+        title: "Historia del género Metal",
+        text: `El metal surgió a finales de los 60s como una evolución más pesada del rock. Black Sabbath es considerada la primera banda de metal, con riffs oscuros y letras sombrías. En los 70s, Deep Purple y Led Zeppelin ayudaron a establecer el género. Los 80s fueron la edad dorada del metal, con el auge del heavy metal tradicional y la aparición de subgéneros como el thrash y el glam. En los 90s y 2000s, el metal continuó diversificándose, incorporando influencias electrónicas, progresivas y extremas, lo que dio paso a nuevas corrientes como el nu metal, metalcore y djent.`,
+        img: "bg-metal.jpg"
+      },
+      heavy: {
+        title: "Historia del género Heavy Metal",
+        text: `El heavy metal tomó forma en los 70s, con bandas como Judas Priest y Iron Maiden liderando el movimiento. Su estilo se caracteriza por guitarras afiladas, ritmos acelerados, voces agudas y una estética poderosa. En los 80s, el heavy metal dominó escenarios y radios, convirtiéndose en un fenómeno global. La New Wave of British Heavy Metal (NWOBHM) trajo nuevas bandas como Saxon y Def Leppard. Aunque en los 90s su popularidad disminuyó, el género ha mantenido una base sólida de seguidores y continúa influyendo en nuevas generaciones de músicos.`,
+        img: "bg_heavy.jpg"
+      },
+      thrash: {
+        title: "Historia del género Thrash Metal",
+        text: `El thrash metal emergió en los 80s como una respuesta más rápida y agresiva al heavy metal tradicional. Originado en EE. UU., bandas como Metallica, Slayer, Megadeth y Anthrax (conocidas como el Big Four) lideraron el género. El thrash se caracteriza por riffs veloces, batería intensa y letras que abordan temas sociales y políticos. En los 90s, su popularidad fue eclipsada por otros estilos, pero ha experimentado un resurgimiento con nuevas bandas y el reconocimiento de los pioneros del género.`,
+        img: "bg_thrash.jpg"
+      },
+      black: {
+        title: "Historia del género Black Metal",
+        text: `El black metal es un subgénero extremo que se desarrolló en Noruega en los 80s y principios de los 90s. Se caracteriza por voces rasgadas, producción cruda y una atmósfera oscura. Bandas como Mayhem, Burzum y Darkthrone definieron el estilo, junto con una estética satánica y misantrópica. El género también fue marcado por controversias, incluyendo incendios de iglesias y crímenes reales. Con el tiempo, el black metal se expandió, dando lugar a variantes como el symphonic, atmospheric y post-black metal.`,
+        img: "bg_black.jpg"
+      },
+      death: {
+        title: "Historia del género Death Metal",
+        text: `El death metal emergió a mediados de los 80s con bandas como Death, Possessed y Morbid Angel. Conocido por sus voces guturales, riffs brutales y temáticas violentas o filosóficas, el death metal se consolidó como uno de los subgéneros más extremos. Escenas importantes se desarrollaron en Florida (EE.UU.) y Suecia, cada una con características sonoras distintivas. A lo largo del tiempo, surgieron variantes como el melodic death metal, technical death metal y brutal death metal.`,
+        img: "bg_death.jpg"
+      },
+      prog: {
+        title: "Historia del género Metal Progresivo",
+        text: `El metal progresivo es una fusión entre la complejidad del rock progresivo y la agresividad del metal. Bandas pioneras como Queensrÿche y Fates Warning sentaron las bases en los 80s. Dream Theater consolidó el estilo en los 90s con su virtuosismo técnico y composiciones extensas. El género explora estructuras no convencionales, cambios de compás y letras introspectivas o conceptuales. Hoy, bandas como Opeth, Symphony X y Haken siguen expandiendo los límites del metal progresivo.`,
+        img: "bg_progresivo.jpg"
+      },
+      nu: {
+        title: "Historia del género Nu Metal",
+        text: `El nu metal surgió en los años 90 como una fusión del metal con géneros como el hip hop, el funk y el industrial. Korn, Deftones, Limp Bizkit y Linkin Park fueron algunos de sus exponentes más conocidos. El estilo se caracteriza por riffs pesados, voces habladas o rapeadas, y letras cargadas de angustia emocional. Aunque fue criticado por puristas del metal, su impacto en la música popular fue innegable, especialmente durante los primeros años del 2000.`,
+        img: "bg_nu.jpg"
+      }
+    };
+
+    function showGenre(genre) {
+      const content = data[genre];
+      const container = document.getElementById("genreContent");
+      container.innerHTML = `
+        <h2>Historia del género... ${genre === "general" ? "Rock y el Metal" : genre.charAt(0).toUpperCase() + genre.slice(1).replace('prog', 'Metal Progresivo').replace('nu', 'Nu Metal')}</h2>
+        <p>${content.text}</p>
+        <img src="${content.img}" alt="Imagen del género ${genre}" />
+      `;
+      document.getElementById("menu").classList.remove("show");
+    }
+  </script>
+
+</body>
+</html>
