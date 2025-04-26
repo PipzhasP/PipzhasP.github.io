@@ -4,49 +4,268 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Iniciar Sesión - Mundo Metal</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="login.css" />
+
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      animation: fondoMetal 10s ease-in-out infinite alternate;
+    }
+
+    @keyframes fondoMetal {
+      0% { background: #0d0d0d; }
+      100% { background: #320202; }
+    }
+
+    h1 {
+      font-family: 'Metal Mania', cursive;
+      font-size: 3.5em;
+      color: crimson;
+      text-shadow: 0 0 10px black, 0 0 20px crimson;
+      animation: vibrar 0.3s infinite alternate;
+      margin-bottom: 10px;
+    }
+
+    @keyframes vibrar {
+      from { transform: rotate(-1deg); }
+      to { transform: rotate(1deg); }
+    }
+
+    .metal-img {
+      width: 200px;
+      margin-bottom: 20px;
+      animation: flotar 4s ease-in-out infinite;
+    }
+
+    @keyframes flotar {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .login-container, .profile-setup {
+      text-align: center;
+      max-width: 400px;
+      margin: auto;
+      padding: 30px;
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 20px;
+      box-shadow: 0 0 25px crimson;
+      animation: aparecer 1s ease-in;
+    }
+
+    @keyframes aparecer {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    input, button {
+      margin-top: 10px;
+      padding: 10px;
+      width: 90%;
+      border: none;
+      border-radius: 10px;
+      font-size: 1em;
+    }
+
+    input {
+      background: #222;
+      color: #fff;
+    }
+
+    button {
+      background: crimson;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px crimson;
+    }
+
+    .password-wrapper {
+      position: relative;
+    }
+
+    .password-wrapper button {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      color: #fff;
+      font-size: 0.7em;
+      padding: 2px 4px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .profile-icons img {
+      width: 60px;
+      height: 60px;
+      margin: 5px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .profile-icons img:hover {
+      transform: scale(1.2) rotate(10deg);
+      border-color: crimson;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5em;
+      }
+
+      .metal-img {
+        width: 150px;
+      }
+
+      .login-container,
+      .profile-setup {
+        width: 90%;
+        padding: 20px;
+      }
+
+      input, button {
+        width: 100%;
+        font-size: 0.95em;
+      }
+
+      .profile-icons img {
+        width: 50px;
+        height: 50px;
+        margin: 4px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2em;
+      }
+
+      .metal-img {
+        width: 120px;
+      }
+
+      .password-wrapper button {
+        font-size: 0.8em;
+      }
+
+      .profile-icons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .profile-icons img {
+        width: 45px;
+        height: 45px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <div class="theme-toggle">
-    <label>
-      <input type="checkbox" id="toggleTheme" />
-      <span>🌙/☀️</span>
-    </label>
-  </div>
+  <div class="loader" id="loader" style="display:none;"></div>
 
-  <div class="loader" id="loader"></div>
-
-  <div class="login-container active" id="loginContainer">
+  <div class="login-container" id="loginContainer">
     <h1>Mundo Metal</h1>
+    <img class="metal-img" src="registro.jpg" alt="Bienvenido a este mundo tan surrealista" />
+    <h3>Bienvenido a este mundo tan surrealista</h3>
+
     <h2>Iniciar sesión</h2>
     <p>Continúa con tu cuenta</p>
 
     <input type="email" id="email" placeholder="Correo electrónico" required />
     <div class="password-wrapper">
       <input type="password" id="password" placeholder="Contraseña" required />
-      <button type="button" id="togglePassword">👁️</button>
+      <button id="togglePassword">👁️</button>
     </div>
     <a href="#" id="forgotPassword">¿Olvidaste tu contraseña?</a>
     <p id="error-message"></p>
     <button onclick="login()">Siguiente</button>
   </div>
 
-  <div class="profile-setup" id="profileSetup">
+  <div class="profile-setup" id="profileSetup" style="display: none;">
     <h2>Elige tu avatar y nombre</h2>
     <div class="profile-icons" id="iconChoices">
-      <img src="icon1.jpg" onclick="selectIcon(this)">
-      <img src="icon2.jpg" onclick="selectIcon(this)">
-      <img src="icon3.jpg" onclick="selectIcon(this)">
-      <img src="icon4.jpg" onclick="selectIcon(this)">
-      <img src="icon5.jpg" onclick="selectIcon(this)">
-      <img src="icon6.jpg" onclick="selectIcon(this)">
+      <img src="icon1.jpg" alt="Avatar 1" onclick="selectIcon(this)">
+      <img src="icon2.jpg" alt="Avatar 2" onclick="selectIcon(this)">
+      <img src="icon3.jpg" alt="Avatar 3" onclick="selectIcon(this)">
+      <img src="icon4.jpg" alt="Avatar 4" onclick="selectIcon(this)">
+      <img src="icon5.jpg" alt="Avatar 5" onclick="selectIcon(this)">
+      <img src="icon6.jpg" alt="Avatar 6" onclick="selectIcon(this)">
     </div>
     <input type="file" id="customAvatar" accept="image/*" />
     <input type="text" id="username" placeholder="Nombre de usuario" required />
     <button onclick="finishProfile()">Entrar al Mundo Metal</button>
   </div>
 
-  <script src="login.js"></script>
+  <script>
+    const togglePassword = document.getElementById('togglePassword');
+    const passwordInput = document.getElementById('password');
+    const loader = document.getElementById('loader');
+
+    togglePassword.addEventListener('click', () => {
+      const type = passwordInput.type === 'password' ? 'text' : 'password';
+      passwordInput.type = type;
+      togglePassword.textContent = type === 'password' ? '👁️' : '🙈';
+    });
+
+    function login() {
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const errorMsg = document.getElementById('error-message');
+
+      if (!email || !password) {
+        errorMsg.textContent = 'Por favor, completa todos los campos.';
+        return;
+      }
+
+      loader.style.display = 'block';
+
+      setTimeout(() => {
+        loader.style.display = 'none';
+        localStorage.setItem('userEmail', email);
+
+        document.getElementById('loginContainer').style.display = 'none';
+        document.getElementById('profileSetup').style.display = 'block';
+      }, 2000);
+    }
+    function selectIcon(img) {
+  document.querySelectorAll('.profile-icons img').forEach(i => i.style.borderColor = 'transparent');
+  img.style.borderColor = 'crimson';
+  localStorage.setItem('userAvatar', img.src);
+}
+
+    function finishProfile() {
+  const username = document.getElementById('username').value.trim();
+  if (!username) {
+    alert('Por favor, ingresa un nombre de usuario.');
+    return;
+  }
+  // guardamos nombre y avatar
+  localStorage.setItem('username', username);
+  const avatar = localStorage.getItem('userAvatar') || 'avatar_default.png';
+  localStorage.setItem('userAvatar', avatar);
+
+  // redirigimos a la página principal
+  window.location.href = 'metal.html';
+}
+
+
+    
+  </script>
 </body>
 </html>
