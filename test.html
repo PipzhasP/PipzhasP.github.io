@@ -228,8 +228,8 @@
     function calculateResult() {
       const numQuestions = 10;
       let correctCount = 0;
-      let resultHTML = "<h2>Resultados del Test</h2><ul>";
-      
+      let resultText = "Resultados del Test:\n\n";
+  
       // Verificar que todas las preguntas hayan sido contestadas
       for (let i = 1; i <= numQuestions; i++) {
         const answer = document.querySelector('input[name="q' + i + '"]:checked');
@@ -238,27 +238,32 @@
           return;
         }
       }
-      
+  
       // Evaluar cada respuesta y generar el desglose
       for (let i = 1; i <= numQuestions; i++) {
         const answer = document.querySelector('input[name="q' + i + '"]:checked');
         if (answer.value === "correct") {
           correctCount++;
-          resultHTML += `<li>Pregunta ${i}: Correcto ✅</li>`;
+          resultText += `Pregunta ${i}: ✅ Correcta\n`;
         } else {
-          resultHTML += `<li>Pregunta ${i}: Incorrecto ❌</li>`;
+          resultText += `Pregunta ${i}: ❌ Incorrecta\n`;
         }
       }
-      resultHTML += `</ul><p>Total de aciertos: ${correctCount} de ${numQuestions}</p>`;
-      document.getElementById("result").innerHTML = resultHTML;
-      // Se retorna el texto sin etiquetas HTML (útil para PDF u otras descargas)
-      return resultHTML.replace(/<[^>]*>?/gm, '');
+  
+      resultText += `\nPuntaje final: ${correctCount} de ${numQuestions}`;
+  
+      // Mostrar el resultado con saltos de línea
+      const resultContainer = document.getElementById("result");
+      resultContainer.textContent = resultText;
+      resultContainer.style.whiteSpace = "pre-line";
     }
   
     function restartTest() {
-      location.reload();
+      document.getElementById("quiz").reset();
+      document.getElementById("result").textContent = "";
     }
   </script>
+  
   
   <br>
   <!-- Descarga de PDF (asegúrate de tener definido pdfGenerator.js con la función generatePDF()) -->
