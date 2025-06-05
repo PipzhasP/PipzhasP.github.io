@@ -360,35 +360,57 @@ $(".apartado-btn").click(function() {
   switch(selected) {
     case "generos":
       info = "Géneros:<br>" +
-             "Explora la diversidad del metal, desde el agresivo Thrash y Death hasta el melódico Symphonic y Folk. <br>" +
-             "Cada subgénero tiene su propia vibra y ritmo que impacta a nivel emocional y cultural.";
+             "Explora la diversidad del metal, desde el agresivo Thrash y Death hasta el melódico Symphonic y Folk.<br>" +
+             "Cada subgénero tiene su propia vibra y ritmo que impacta a nivel emocional y cultural.<br>" +
+             "Ejemplos:<br>" +
+             "- Thrash Metal: Metallica - 'Master of Puppets'<br>" +
+             "- Death Metal: Death - 'Symbolic'<br>" +
+             "- Symphonic Metal: Nightwish - 'Ghost Love Score'<br>" +
+             "- Folk Metal: Eluveitie - 'Inis Mona'";
       bgImage = "url('bg_generos.png')";
       break;
-      case "historia":
-  info = "Historia:<br>" +
-         "El metal surgió en los años 60, marcado por la influencia del blues, el rock y la rebeldía. <br>" +
-         "Bandas pioneras como Black Sabbath transformaron el sonido y la actitud..." +
-         "<br><a href='historia.html'>Más Historia</a>";
-  bgImage = "url('bg_historia.png')";
-  break;
-
+      
+    case "historia":
+      info = "Historia:<br>" +
+             "El metal surgió en los años 60, marcado por la influencia del blues, el rock y la rebeldía.<br>" +
+             "Bandas pioneras como Black Sabbath transformaron el sonido y la actitud...<br>" +
+             "Ejemplo:<br>" +
+             "- Black Sabbath - 'Iron Man'<br>" +
+             "<br><a href='historia.html'>Más Historia</a>";
+      bgImage = "url('bg_historia.png')";
       break;
+      
     case "eventos":
       info = "Eventos:<br>" +
              "Infórmate sobre festivales y conciertos legendarios que han definido la cultura metalera.<br>" +
-             "Eventos como Wacken Open Air y Hellfest reúnen a miles de fans...";
+             "Eventos como Wacken Open Air y Hellfest reúnen a miles de fans...<br>" +
+             "Bandas presentes:<br>" +
+             "- Wacken Open Air: Judas Priest, Iron Maiden<br>" +
+             "- Hellfest: Gojira, Slipknot";
       bgImage = "url('bg_eventos.jpg')";
       break;
+      
     case "bandas":
       info = "Bandas Icónicas:<br>" +
-             "Sumérgete en la historia de las bandas que han marcado el camino del metal...";
+             "Sumérgete en la historia de las bandas que han marcado el camino del metal.<br>" +
+             "Algunas imprescindibles:<br>" +
+             "- Iron Maiden<br>" +
+             "- Slayer<br>" +
+             "- Pantera<br>" +
+             "- Tool";
       bgImage = "url('bg_bandas.jpg')";
       break;
+      
     case "recomendaciones":
       info = "Recomendaciones Musicales:<br>" +
-             "Escucha álbumes esenciales y descubre nuevos lanzamientos recomendados...";
+             "Escucha álbumes esenciales y descubre nuevos lanzamientos recomendados.<br>" +
+             "Álbumes esenciales:<br>" +
+             "- Megadeth - 'Rust in Peace'<br>" +
+             "- Opeth - 'Blackwater Park'<br>" +
+             "- Mastodon - 'Crack the Skye'";
       bgImage = "url('bg_recomendaciones.jpg')";
       break;
+
     case "galeria":
       info = "Galería:<br>" +
              "Disfruta de una colección visual con imágenes icónicas<br>" +
